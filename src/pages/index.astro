@@ -1,4 +1,10 @@
 ---
+import '../styles/global.css';
+
+const hero = {
+	title: 'Raúl Zarza',
+	tagline: 'Builder of calm digital experiences',
+};
 
 ---
 
@@ -8,9 +14,13 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Raúl Zarza</title>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center">
+		<main class="text-center space-y-4 p-6">
+			<p class="text-xs uppercase tracking-[0.3em] text-slate-400">Portfolio incoming</p>
+			<h1 class="text-4xl font-semibold">{hero.title}</h1>
+			<p class="text-lg text-slate-300">{hero.tagline}</p>
+		</main>
 	</body>
 </html>
