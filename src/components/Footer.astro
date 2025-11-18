@@ -1,0 +1,16 @@
+---
+import type { Lang, SiteCopy } from "../content/site";
+
+interface Props {
+  lang: Lang;
+  copy: SiteCopy;
+}
+
+const { copy } = Astro.props;
+---
+<footer class="border-t border-border/60">
+  <div class="mx-auto flex max-w-5xl flex-col gap-3 px-6 py-10 text-sm text-muted-foreground">
+    <p>{copy.footer.note}</p>
+    <p class="text-xs">© {new Date().getFullYear()} · {copy.nav.brand}</p>
+  </div>
+</footer>

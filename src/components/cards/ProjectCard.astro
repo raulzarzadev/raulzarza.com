@@ -1,0 +1,28 @@
+---
+import type { ProjectCard as Project } from "../../content/site";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+<a
+  href={project.href}
+  target="_blank"
+  rel="noreferrer"
+  class="group rounded-3xl border border-border/60 bg-card/60 p-6 transition hover:-translate-y-1 hover:border-foreground/40"
+>
+  <div class="flex items-center justify-between">
+    <h3 class="text-xl font-semibold">{project.name}</h3>
+    <span class="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">
+      {project.status}
+    </span>
+  </div>
+  <p class="mt-3 text-sm text-muted-foreground">{project.description}</p>
+  <div class="mt-5 flex flex-wrap gap-2 text-xs text-muted-foreground">
+    {project.stack.map((tech) => (
+      <span class="rounded-full bg-muted px-3 py-1" data-tech={tech}>{tech}</span>
+    ))}
+  </div>
+</a>

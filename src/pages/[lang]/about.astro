@@ -1,0 +1,70 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import { getCopy, languages, type Lang } from "../../content/site";
+
+export const prerender = true;
+
+interface Props {
+  lang: Lang;
+}
+
+export function getStaticPaths() {
+  return languages.map((lang) => ({
+    params: { lang },
+    props: { lang },
+  }));
+}
+
+const { lang } = Astro.props as Props;
+const copy = getCopy(lang);
+const summary =
+  lang === "es"
+    ? "Trabajo entre estrategia de producto, audio documental y herramientas low/no-code. Aquí registro decisiones, referencias y principios."
+    : "I split my time across product strategy, long-form audio, and low/no-code tooling. This page captures references and principles.";
+const principles = lang === "es"
+  ? [
+      "Diseño orientado a la energía: interfaces que invitan a volver.",
+      "Automatización con rostro humano: bots que explican lo que hacen.",
+      "Publicar sin ansiedad: ciclos pequeños y medición consciente.",
+    ]
+  : [
+      "Energy-first design: interfaces that invite a calm return.",
+      "Human automation: bots that narrate what they do.",
+      "Anxiety-free shipping: small cycles, mindful metrics.",
+    ];
+---
+<BaseLayout lang={lang} copy={copy} page={{ title: copy.nav.links.find((l) => l.slug === "about")?.label, description: summary }}>
+  <section class="space-y-5">
+    <SectionHeading title={lang === "es" ? "Sobre mí" : "About"} caption={summary} />
+    <div class="rounded-3xl border border-border/60 p-6 text-sm leading-relaxed text-muted-foreground">
+      <p>
+        {lang === "es"
+          ? "Opero desde Ciudad de México. Disfruto combinar sistemas de información con storytelling, crear playbooks para equipos pequeños y mantener un portafolio distribuido en subdominios."
+          : "Based in Mexico City. I enjoy mixing information systems with storytelling, building playbooks for small teams, and maintaining a distributed portfolio across subdomains."}
+      </p>
+    </div>
+  </section>
+
+  <section class="space-y-6">
+    <SectionHeading title={lang === "es" ? "Principios" : "Principles"} />
+    <ul class="grid gap-4 md:grid-cols-2">
+      {principles.map((principle) => (
+        <li class="rounded-3xl border border-border/60 p-5 text-sm text-muted-foreground">{principle}</li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="space-y-6">
+    <SectionHeading title={copy.facets.title} caption={copy.facets.caption} />
+    <div class="space-y-6">
+      {copy.facets.items.map((facet) => (
+        <article class="rounded-3xl border border-border/60 p-6">
+          <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">{facet.year}</p>
+          <h3 class="mt-2 text-lg font-semibold">{facet.title}</h3>
+          <p class="text-sm text-muted-foreground">{facet.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SectionHeading from "../../../components/SectionHeading.astro";
+import ProjectCard from "../../../components/cards/ProjectCard.astro";
+import { getCopy, languages, type Lang } from "../../../content/site";
+
+export const prerender = true;
+
+interface Props {
+  lang: Lang;
+}
+
+export function getStaticPaths() {
+  return languages.map((lang) => ({
+    params: { lang },
+    props: { lang },
+  }));
+}
+
+const { lang } = Astro.props as Props;
+const copy = getCopy(lang);
+---
+<BaseLayout
+  lang={lang}
+  copy={copy}
+  page={{ title: copy.projects.title, description: copy.projects.caption }}
+>
+  <section class="space-y-8">
+    <SectionHeading title={copy.projects.title} caption={copy.projects.caption} />
+    <div class="grid gap-6 md:grid-cols-2">
+      {copy.projects.items.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+  </section>
+  <section class="space-y-3 rounded-3xl border border-dashed border-border/60 p-6 text-sm text-muted-foreground">
+    <p>
+      {lang === "es"
+        ? "Cada proyecto vive en un subdominio independiente. La idea es publicar dashboards ligeros con métricas clave desde Strapi."
+        : "Each project lives under its own subdomain. Upcoming work: publish lightweight dashboards fed by Strapi metrics."}
+    </p>
+  </section>
+</BaseLayout>

@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import Button from "../../components/ui/Button.astro";
+import { getCopy, languages, type Lang } from "../../content/site";
+
+export const prerender = true;
+
+interface Props {
+  lang: Lang;
+}
+
+export function getStaticPaths() {
+  return languages.map((lang) => ({
+    params: { lang },
+    props: { lang },
+  }));
+}
+
+const { lang } = Astro.props as Props;
+const copy = getCopy(lang);
+---
+<BaseLayout lang={lang} copy={copy} page={{ title: copy.contact.title, description: copy.contact.caption }}>
+  <section class="space-y-8">
+    <SectionHeading title={copy.contact.title} caption={copy.contact.caption} />
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="space-y-4 rounded-3xl border border-border/60 p-6">
+        <p class="text-sm font-medium">{copy.contact.emailLabel}</p>
+        <a href={`mailto:${copy.contact.email}`} class="text-3xl font-semibold">
+          {copy.contact.email}
+        </a>
+        <p class="text-sm text-muted-foreground">{copy.contact.commentsLabel}</p>
+      </div>
+      <div class="space-y-4 rounded-3xl border border-border/60 p-6">
+        <p class="text-sm font-medium">Newsletter</p>
+        <p class="text-sm text-muted-foreground">
+          {lang === "es"
+            ? "Integro Buttondown para correos de baja frecuencia. Pronto añadiré el formulario real."
+            : "I'll wire Buttondown for low-frequency letters. Form placeholder for now."}
+        </p>
+        <Button href="#newsletter">
+          {copy.contact.newsletterCta}
+        </Button>
+        <div class="flex flex-wrap gap-3">
+          {copy.contact.socials.map((social) => (
+            <a href={social.href} target="_blank" rel="noreferrer" class="text-sm text-muted-foreground underline-offset-4 hover:underline">
+              {social.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

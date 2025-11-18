@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from "../../components/ui/Button.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import ProjectCard from "../../components/cards/ProjectCard.astro";
+import ServiceCard from "../../components/cards/ServiceCard.astro";
+import PostCard from "../../components/cards/PostCard.astro";
+import { getCopy, languages, type Lang } from "../../content/site";
+
+export const prerender = true;
+
+interface Props {
+  lang: Lang;
+}
+
+export function getStaticPaths() {
+  return languages.map((lang) => ({
+    params: { lang },
+    props: { lang },
+  }));
+}
+
+const { lang } = Astro.props as Props;
+const copy = getCopy(lang);
+---
+<BaseLayout lang={lang} copy={copy} page={{ title: copy.seo.siteName, description: copy.seo.description }}>
+  <section class="space-y-6">
+    <SectionHeading eyebrow={copy.hero.eyebrow} title={copy.hero.title} caption={copy.hero.description} />
+    <div class="flex flex-wrap gap-4">
+      {copy.hero.actions.map((action) => (
+        <Button href={action.href} variant={action.variant}>
+          {action.label}
+        </Button>
+      ))}
+    </div>
+  </section>
+
+  <section class="space-y-10">
+    <SectionHeading title={copy.services.title} caption={copy.services.caption} />
+    <div class="grid gap-6 md:grid-cols-3">
+      {copy.services.items.map((service) => (
+        <ServiceCard service={service} />
+      ))}
+    </div>
+  </section>
+
+  <section class="space-y-10">
+    <SectionHeading title={copy.projects.title} caption={copy.projects.caption} />
+    <div class="grid gap-6 md:grid-cols-3">
+      {copy.projects.items.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+  </section>
+
+  <section class="space-y-10">
+    <SectionHeading title={copy.posts.title} caption={copy.posts.caption} />
+    <div class="grid gap-6 md:grid-cols-3">
+      {copy.posts.items.map((post) => (
+        <PostCard post={post} />
+      ))}
+    </div>
+  </section>
+
+  <section class="space-y-8">
+    <SectionHeading title={copy.facets.title} caption={copy.facets.caption} />
+    <div class="space-y-6">
+      {copy.facets.items.map((facet) => (
+        <article class="rounded-3xl border border-border/60 p-6">
+          <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">{facet.year}</p>
+          <h3 class="mt-2 text-lg font-semibold">{facet.title}</h3>
+          <p class="text-sm text-muted-foreground">{facet.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="space-y-6 rounded-3xl border border-border/60 p-8">
+    <SectionHeading title={copy.contact.title} caption={copy.contact.caption} />
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="space-y-4">
+        <p class="text-sm font-medium">{copy.contact.emailLabel}</p>
+        <a href={`mailto:${copy.contact.email}`} class="text-2xl font-semibold">{copy.contact.email}</a>
+        <p class="text-sm text-muted-foreground">{copy.contact.commentsLabel}</p>
+      </div>
+      <div class="space-y-4">
+        <p class="text-sm font-medium">Newsletter</p>
+        <Button href="#newsletter" variant="default">
+          {copy.contact.newsletterCta}
+        </Button>
+        <div class="flex flex-wrap gap-3 text-sm text-muted-foreground">
+          {copy.contact.socials.map((social) => (
+            <a href={social.href} target="_blank" rel="noreferrer" class="underline-offset-4 hover:underline">
+              {social.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

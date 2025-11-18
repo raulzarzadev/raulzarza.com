@@ -1,0 +1,32 @@
+---
+import type { Lang, SiteCopy } from "../content/site";
+import LanguageToggle from "./LanguageToggle.astro";
+
+interface Props {
+  lang: Lang;
+  copy: SiteCopy;
+  currentPath: string;
+}
+
+const { lang, copy, currentPath } = Astro.props;
+const basePath = `/${lang}`;
+const navLinks = copy.nav.links.map((link) => ({
+  label: link.label,
+  href: link.slug === "home" ? basePath : `${basePath}/${link.slug}`,
+}));
+---
+<header class="sticky top-0 z-30 border-b border-border/60 bg-background/80 backdrop-blur-xl">
+  <div class="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4 text-sm">
+    <a href={basePath} class="font-semibold tracking-tight">
+      {copy.nav.brand}
+    </a>
+    <nav class="hidden gap-6 md:flex">
+      {navLinks.map((link) => (
+        <a href={link.href} class="text-muted-foreground transition-colors hover:text-foreground">
+          {link.label}
+        </a>
+      ))}
+    </nav>
+    <LanguageToggle lang={lang} currentPath={currentPath} />
+  </div>
+</header>

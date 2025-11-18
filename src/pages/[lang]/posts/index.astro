@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SectionHeading from "../../../components/SectionHeading.astro";
+import PostCard from "../../../components/cards/PostCard.astro";
+import { getCopy, languages, type Lang } from "../../../content/site";
+
+export const prerender = true;
+
+interface Props {
+  lang: Lang;
+}
+
+export function getStaticPaths() {
+  return languages.map((lang) => ({
+    params: { lang },
+    props: { lang },
+  }));
+}
+
+const { lang } = Astro.props as Props;
+const copy = getCopy(lang);
+---
+<BaseLayout
+  lang={lang}
+  copy={copy}
+  page={{ title: `${copy.posts.title}`, description: copy.posts.caption }}
+>
+  <section class="space-y-8">
+    <SectionHeading title={copy.posts.title} caption={copy.posts.caption} />
+    <div class="grid gap-6 md:grid-cols-2">
+      {copy.posts.items.map((post) => (
+        <PostCard post={post} />
+      ))}
+    </div>
+  </section>
+  <section class="space-y-3 rounded-3xl border border-border/60 p-6 text-sm text-muted-foreground">
+    <p>
+      {lang === "es"
+        ? "Los posts se publican desde Strapi y se envían también por newsletter. Esta vista se actualizará cuando conectemos el CMS."
+        : "Posts will eventually sync from Strapi and ship via the newsletter. This view will refresh once the CMS is wired."}
+    </p>
+  </section>
+</BaseLayout>

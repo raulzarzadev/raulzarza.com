@@ -1,44 +1,58 @@
-# Astro Starter Kit: Minimal
+# raulzarza.com
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+Minimalist landing, blog, and directory for Raúl Zarza’s distributed portfolio. The site is bilingual (ES/EN), highlights subdomain projects like `autows`, and will eventually consume long-form content from Strapi.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Stack
 
-## 🚀 Project Structure
+- [Astro 5](https://astro.build) rendered statically and deployed on Vercel.
+- Tailwind CSS v4 + shadcn tokens for a tight visual system.
+- shadcn/ui button primitive + `clsx`/`tailwind-merge` helpers.
+- pnpm as the package manager.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Project structure
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+src/
+├── components/
+│   ├── cards/
+│   │   ├── PostCard.astro
+│   │   └── ProjectCard.astro
+│   ├── ui/
+│   │   ├── Button.astro
+│   │   └── button.ts
+│   ├── Footer.astro
+│   ├── Header.astro
+│   ├── LanguageToggle.astro
+│   └── SectionHeading.astro
+├── content/
+│   └── site.ts          # copy, i18n helpers, sample data
+├── layouts/
+│   └── BaseLayout.astro
+├── pages/
+│   ├── index.astro      # redirects to /es
+│   └── [lang]/          # /es/... and /en/... routes
+│       ├── index.astro
+│       ├── about.astro
+│       ├── contact.astro
+│       ├── posts/index.astro
+│       └── projects/index.astro
+├── lib/
+│   └── utils.ts
+└── styles/
+	└── global.css
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Commands
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```sh
+pnpm install    # install deps
+pnpm dev        # start local dev server on http://localhost:4321
+pnpm build      # generate static output into dist/
+pnpm preview    # serve the production build
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Next steps
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-# raulzarza.com
+1. Connect Strapi (posts/projects collections) and replace the placeholder content.
+2. Add newsletter form (Buttondown/ConvertKit) + Giscus component for comments.
+3. Wire analytics + consent banner before launching to production.
