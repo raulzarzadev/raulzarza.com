@@ -4,7 +4,6 @@ import Button from "../../components/ui/Button.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
 import ProjectCard from "../../components/cards/ProjectCard.astro";
 import ServiceCard from "../../components/cards/ServiceCard.astro";
-import PostCard from "../../components/cards/PostCard.astro";
 import SchemaServices from "../../components/schema/SchemaServices.astro";
 import { getCopy, languages, type Lang } from "../../content/site";
 
@@ -26,16 +25,24 @@ const copy = getCopy(lang);
 ---
 <BaseLayout lang={lang} copy={copy} page={{ description: copy.seo.description }}>
 
-  <!-- Structured Data: Service schemas for the 3-stage SaaS process -->
   <SchemaServices lang={lang} services={copy.services.items} />
 
   <section class="space-y-6">
     <SectionHeading eyebrow={copy.hero.eyebrow} title={copy.hero.title} caption={copy.hero.description} />
     <div class="flex flex-wrap gap-4">
       {copy.hero.actions.map((action) => (
-        <Button href={action.href} variant={action.variant}>
+        <Button href={action.href} variant={action.variant} download={action.download}>
           {action.label}
         </Button>
+      ))}
+    </div>
+  </section>
+
+  <section class="space-y-10">
+    <SectionHeading title={copy.projects.title} caption={copy.projects.caption} />
+    <div class="grid gap-6 md:grid-cols-2">
+      {copy.projects.items.map((project) => (
+        <ProjectCard project={project} />
       ))}
     </div>
   </section>
@@ -45,24 +52,6 @@ const copy = getCopy(lang);
     <div class="grid gap-6 md:grid-cols-3">
       {copy.services.items.map((service) => (
         <ServiceCard service={service} />
-      ))}
-    </div>
-  </section>
-
-  <section class="space-y-10">
-    <SectionHeading title={copy.projects.title} caption={copy.projects.caption} />
-    <div class="grid gap-6 md:grid-cols-3">
-      {copy.projects.items.map((project) => (
-        <ProjectCard project={project} />
-      ))}
-    </div>
-  </section>
-
-  <section class="space-y-10">
-    <SectionHeading title={copy.posts.title} caption={copy.posts.caption} />
-    <div class="grid gap-6 md:grid-cols-3">
-      {copy.posts.items.map((post) => (
-        <PostCard post={post} />
       ))}
     </div>
   </section>
@@ -86,13 +75,8 @@ const copy = getCopy(lang);
       <div class="space-y-4">
         <p class="text-sm font-medium">{copy.contact.emailLabel}</p>
         <a href={`mailto:${copy.contact.email}`} class="text-2xl font-semibold">{copy.contact.email}</a>
-        <p class="text-sm text-muted-foreground">{copy.contact.commentsLabel}</p>
       </div>
       <div class="space-y-4">
-        <p class="text-sm font-medium">Newsletter</p>
-        <Button href="#newsletter" variant="default">
-          {copy.contact.newsletterCta}
-        </Button>
         <div class="flex flex-wrap gap-3 text-sm text-muted-foreground">
           {copy.contact.socials.map((social) => (
             <a href={social.href} target="_blank" rel="noopener noreferrer" class="underline-offset-4 hover:underline">

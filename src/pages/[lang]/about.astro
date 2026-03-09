@@ -18,37 +18,53 @@ export function getStaticPaths() {
 
 const { lang } = Astro.props as Props;
 const copy = getCopy(lang);
+
 const summary =
   lang === "es"
-    ? "Trabajo entre estrategia de producto, audio documental y herramientas low/no-code. Aquí registro decisiones, referencias y principios."
-    : "I split my time across product strategy, long-form audio, and low/no-code tooling. This page captures references and principles.";
-const principles = lang === "es"
-  ? [
-      "Diseño orientado a la energía: interfaces que invitan a volver.",
-      "Automatización con rostro humano: bots que explican lo que hacen.",
-      "Publicar sin ansiedad: ciclos pequeños y medición consciente.",
-    ]
-  : [
-      "Energy-first design: interfaces that invite a calm return.",
-      "Human automation: bots that narrate what they do.",
-      "Anxiety-free shipping: small cycles, mindful metrics.",
-    ];
+    ? "Desarrollador web con más de 10 años de experiencia. Me dedico a crear herramientas digitales que resuelven problemas reales para negocios."
+    : "Web developer with over 10 years of experience. I build digital tools that solve real problems for businesses.";
+
+const bio =
+  lang === "es"
+    ? [
+        "Vivo en La Paz, Baja California Sur. Llevo más de una década diseñando y construyendo sitios web, plataformas y productos SaaS para todo tipo de negocios. Me mueve la idea de tomar algo que funciona manual o a medias y convertirlo en una herramienta digital que ahorre tiempo y funcione bien.",
+        "No me quedo con una sola cosa. Tengo productos propios como Mi Granja (administración de ganado), Baja Rent (renta de equipos), HUAM Deportiva (eventos deportivos) y Baja Minigolf (scoring digital). Cada uno nació de una necesidad real que encontré o que alguien me platicó.",
+        "Mi stack principal gira alrededor de Next.js, Firebase, Tailwind y React, pero uso lo que haga falta. He trabajado con Astro, Supabase, tRPC, Cloudflare Workers y muchas otras herramientas. Lo que me importa es que el producto funcione y que el usuario lo entienda sin manual.",
+        "Combino trabajo independiente con proyectos personales. Me gusta tener siempre algo construyendo, algo probando y algo aprendiendo. Esta página es parte de eso: un espacio para mostrar lo que hago y compartir lo que voy descubriendo en el camino."
+      ]
+    : [
+        "I live in La Paz, Baja California Sur, Mexico. For over a decade I've been designing and building websites, platforms, and SaaS products for all kinds of businesses. What drives me is taking something that works manually or halfway and turning it into a digital tool that saves time and just works.",
+        "I don't stick to just one thing. I have my own products like Mi Granja (livestock management), Baja Rent (equipment rentals), HUAM Deportiva (sports events), and Baja Minigolf (digital scoring). Each one was born from a real need I found or someone told me about.",
+        "My main stack revolves around Next.js, Firebase, Tailwind, and React, but I use whatever gets the job done. I've worked with Astro, Supabase, tRPC, Cloudflare Workers, and many other tools. What matters to me is that the product works and the user gets it without a manual.",
+        "I combine independent work with personal projects. I like always having something I'm building, something I'm testing, and something I'm learning. This site is part of that: a space to show what I do and share what I discover along the way."
+      ];
+
+const principles =
+  lang === "es"
+    ? [
+        "Resolver primero, optimizar después. Un producto que funciona vale más que uno perfecto que nunca sale.",
+        "Construir para personas reales. Si el usuario necesita un manual, algo salió mal.",
+        "Siempre tener algo en marcha. La mejor forma de aprender es construyendo.",
+      ]
+    : [
+        "Solve first, optimize later. A working product beats a perfect one that never ships.",
+        "Build for real people. If the user needs a manual, something went wrong.",
+        "Always have something going. The best way to learn is by building.",
+      ];
 ---
 <BaseLayout lang={lang} copy={copy} page={{ title: copy.nav.links.find((l) => l.slug === "about")?.label, description: summary }}>
   <section class="space-y-5">
     <SectionHeading title={lang === "es" ? "Sobre mí" : "About"} caption={summary} />
-    <div class="rounded-3xl border border-border/60 p-6 text-sm leading-relaxed text-muted-foreground">
-      <p>
-        {lang === "es"
-          ? "Opero desde Ciudad de México. Disfruto combinar sistemas de información con storytelling, crear playbooks para equipos pequeños y mantener un portafolio distribuido en subdominios."
-          : "Based in Mexico City. I enjoy mixing information systems with storytelling, building playbooks for small teams, and maintaining a distributed portfolio across subdomains."}
-      </p>
+    <div class="space-y-4 rounded-3xl border border-border/60 p-6 text-sm leading-relaxed text-muted-foreground">
+      {bio.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))}
     </div>
   </section>
 
   <section class="space-y-6">
     <SectionHeading title={lang === "es" ? "Principios" : "Principles"} />
-    <ul class="grid gap-4 md:grid-cols-2">
+    <ul class="grid gap-4 md:grid-cols-3">
       {principles.map((principle) => (
         <li class="rounded-3xl border border-border/60 p-5 text-sm text-muted-foreground">{principle}</li>
       ))}

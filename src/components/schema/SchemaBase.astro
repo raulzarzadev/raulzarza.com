@@ -26,15 +26,16 @@ const person = {
   alternateName: "Raul Zarza",
   url: baseUrl,
   image: `${baseUrl}/images/raul-zarza.jpg`,
-  jobTitle: lang === "es" ? "Consultor SaaS y Producto Digital" : "SaaS Consultant & Digital Product Strategist",
+  jobTitle: lang === "es" ? "Desarrollador Web y Creador de SaaS" : "Web Developer & SaaS Builder",
   description:
     lang === "es"
-      ? "Trabajo con fundadores y equipos que ya tienen clientes para convertir su operacion en productos SaaS claros, medibles y listos para crecer."
-      : "Partnering with founders who already sell services to translate their delivery into focused, measurable SaaS products.",
+      ? "Desarrollador web con mas de 10 años creando SaaS, plataformas y herramientas digitales para negocios reales. Desde La Paz, BCS."
+      : "Web developer with 10+ years building SaaS, platforms, and digital tools for real businesses. Based in La Paz, Mexico.",
   knowsAbout: ["SaaS", "Product Strategy", "Automation", "No-Code", "Low-Code"],
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Mexico City",
+    addressLocality: "La Paz",
+    addressRegion: "Baja California Sur",
     addressCountry: "MX",
   },
   sameAs: [
@@ -47,17 +48,18 @@ const professionalService = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "@id": `${baseUrl}/#organization`,
-  name: "Raul Zarza",
+  name: "Raúl Zarza",
   url: baseUrl,
   logo: `${baseUrl}/favicon.svg`,
   description:
     lang === "es"
-      ? "Consultoria de producto y SaaS. Transformo servicios probados en software escalable."
-      : "Product and SaaS consultancy. Turning proven operations into scalable software.",
+      ? "Desarrollador web con +10 años creando SaaS, plataformas y herramientas digitales para negocios reales."
+      : "Web developer with 10+ years building SaaS, platforms, and digital tools for real businesses.",
   founder: { "@id": `${baseUrl}/#person` },
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Mexico City",
+    addressLocality: "La Paz",
+    addressRegion: "Baja California Sur",
     addressCountry: "MX",
   },
   contactPoint: {

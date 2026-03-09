@@ -7,18 +7,29 @@ interface Props extends Partial<ButtonVariants> {
   class?: string;
   type?: "button" | "submit" | "reset";
   ariaLabel?: string;
+  download?: boolean | string;
 }
 
-const { href, class: className = "", variant, size, ariaLabel, ...rest } = Astro.props;
-const Tag = href ? "a" : "button";
-const attributes = {
-  ...rest,
-  type: !href ? rest.type ?? "button" : undefined,
-  href,
-  "aria-label": ariaLabel,
-};
+const { href, class: className = "", variant, size, ariaLabel, download, type, ...rest } = Astro.props;
 const classes = cn(buttonVariants({ variant, size }), className);
 ---
-<component this={Tag} class={classes} {...attributes}>
-  <slot />
-</component>
+{href ? (
+  <a
+    href={href}
+    class={classes}
+    aria-label={ariaLabel}
+    {...(download !== undefined && { download: download === true ? "" : download })}
+    {...rest}
+  >
+    <slot />
+  </a>
+) : (
+  <button
+    type={type ?? "button"}
+    class={classes}
+    aria-label={ariaLabel}
+    {...rest}
+  >
+    <slot />
+  </button>
+)}

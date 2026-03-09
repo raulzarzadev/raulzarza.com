@@ -10,6 +10,7 @@ export type CallToAction = {
   label: string
   href: string
   variant?: 'default' | 'ghost'
+  download?: boolean
 }
 
 export type ProjectCard = {
@@ -94,341 +95,324 @@ const copy: Record<Lang, SiteCopy> = {
     seo: {
       siteName: 'Raúl Zarza',
       description:
-        'Portafolio, blog y laboratorio para proyectos y subdominios como autows.'
+        'Desarrollador web con +10 años de experiencia creando SaaS, plataformas y herramientas digitales para negocios reales. Desde La Paz, BCS.'
     },
     nav: {
       brand: 'raulzarza.com',
       links: [
-        { slug: 'posts', label: 'Posts' },
         { slug: 'projects', label: 'Proyectos' },
         { slug: 'about', label: 'Sobre mí' },
         { slug: 'contact', label: 'Contacto' }
       ]
     },
     hero: {
-      eyebrow: 'SaaS desde negocios reales',
-      title: 'Transformo servicios probados en software escalable',
+      eyebrow: 'Desarrollador web · La Paz, BCS',
+      title: 'Creo herramientas digitales para negocios que necesitan funcionar mejor',
       description:
-        'Trabajo con fundadores y equipos que ya tienen clientes para convertir su operación en productos SaaS claros, medibles y listos para crecer.',
+        'Llevo más de 10 años diseñando y desarrollando plataformas web, SaaS y herramientas que ayudan a negocios reales a digitalizar y optimizar su operación. Me gusta construir cosas nuevas y siempre tengo algo en marcha.',
       actions: [
         {
-          label: 'Convertir mi servicio en SaaS',
-          href: '/es/contact',
+          label: 'Conoce mis proyectos',
+          href: '/es/projects',
           variant: 'default'
         },
         {
-          label: 'Ver procesos y casos',
-          href: '/es/projects',
+          label: 'Escríbeme',
+          href: '/es/contact',
           variant: 'ghost'
+        },
+        {
+          label: 'Descargar CV',
+          href: '/cv-raul-zarza.pdf',
+          variant: 'ghost',
+          download: true
         }
       ]
     },
     projects: {
-      title: 'Casos convertidos en SaaS',
+      title: 'Proyectos',
       caption:
-        'Subdominios donde pruebo, documento y lanzo productos construidos desde operaciones existentes.',
+        'Productos propios que he construido para resolver problemas reales. Cada uno nació de una necesidad concreta.',
       items: [
         {
-          name: 'raulzarza.com',
+          name: 'Mi Granja',
           description:
-            'Hub público que reúne portafolio, blog y entradas a cada laboratorio SaaS.',
-          stack: ['Astro', 'Tailwind', 'shadcn'],
-          status: 'Live',
-          href: 'https://raulzarza.com'
+            'SaaS para administración de ganado. Control de inventario, reproducción, salud y eventos del hato desde cualquier dispositivo.',
+          stack: ['Next.js', 'Firebase', 'PWA'],
+          status: 'Activo',
+          href: 'https://migranja.app'
         },
         {
-          name: 'autows',
+          name: 'Baja Rent',
           description:
-            'Servicio de automatización traducido a plataforma multi-tenant para creadores y equipos pequeños.',
-          stack: ['tRPC', 'Next.js', 'Supabase'],
-          status: 'En curso',
-          href: 'https://autows.raulzarza.com'
+            'Plataforma para negocios de renta: lavadoras, bicicletas, herramientas y más. Gestión de clientes, inventario y pagos.',
+          stack: ['Next.js', 'Firebase', 'Tailwind'],
+          status: 'Activo',
+          href: 'https://bajarent.app'
         },
         {
-          name: 'lab',
+          name: 'HUAM Deportiva',
           description:
-            'Colección de playbooks y micro utilidades para validar cobros y métricas en días.',
-          stack: ['Cloudflare', 'Workers', 'Bun'],
-          status: 'Beta',
-          href: 'https://lab.raulzarza.com'
+            'Plataforma para crear, promover y gestionar eventos deportivos en Baja California Sur.',
+          stack: ['Next.js', 'Firebase', 'Maps'],
+          status: 'Activo',
+          href: 'https://huamdeportiva.com'
+        },
+        {
+          name: 'Baja Minigolf',
+          description:
+            'Sistema de puntaje digital para un campo de minigolf en La Paz. Los jugadores registran sus scores en tiempo real.',
+          stack: ['Next.js', 'Firebase', 'Realtime DB'],
+          status: 'Activo',
+          href: 'https://bajaminigolf.com'
         }
       ]
     },
     services: {
-      title: 'Cómo aterrizo un SaaS',
+      title: 'Lo que hago',
       caption:
-        'Proceso en tres capas para pasar de servicio manual a producto escalable.',
+        'Trabajo con negocios que quieren digitalizar parte de su operación o necesitan una herramienta a la medida.',
       items: [
         {
-          title: 'Mapeo Operativo',
+          title: 'Desarrollo de plataformas web',
           description:
-            'Desmenuzo el servicio actual, identifico los momentos de valor y defino métricas de éxito por rol.',
+            'Diseño y construyo plataformas completas: desde la idea hasta el producto funcionando. Dashboards, paneles de administración, sistemas de gestión.',
           deliverables: [
-            'Blueprint del servicio',
-            'Inventario de automatizaciones',
-            'Métricas base'
+            'Aplicaciones web completas',
+            'Paneles de administración',
+            'APIs y bases de datos'
           ]
         },
         {
-          title: 'MVP SaaS listo para cobrar',
+          title: 'Productos SaaS',
           description:
-            'Diseño UX minimalista, arquitectura, stack y planes. Construyo módulos core con feature flags.',
+            'Creo software como servicio para nichos específicos. Me especializo en tomar un problema real y convertirlo en una herramienta que cualquiera pueda usar.',
           deliverables: [
-            'Diseño y copy',
-            'Stack documentado',
-            'Checkout o billing conectado'
+            'MVPs funcionales',
+            'Sistemas multi-tenant',
+            'Cobros y suscripciones'
           ]
         },
         {
-          title: 'Escalamiento y entregables',
+          title: 'Digitalización de operaciones',
           description:
-            'Implemento analítica, onboarding guiado, soportes de contenido y experimentos de pricing.',
+            'Ayudo a negocios a pasar de hojas de cálculo y procesos manuales a sistemas digitales que ahorran tiempo y reducen errores.',
           deliverables: [
-            'Panel de métricas',
-            'Playbook de lanzamiento',
-            'Roadmap trimestral'
+            'Automatización de procesos',
+            'Migración de datos',
+            'Capacitación de equipos'
           ]
         }
       ]
     },
     posts: {
-      title: 'Últimos escritos',
+      title: 'Próximamente',
       caption:
-        'Notas tácticas sobre producto, pricing, automatización y hábitos de founders.',
-      items: [
-        {
-          title: 'Autonomía como feature',
-          summary:
-            'Cómo diseño servicios que pueden operar casi solos usando automatizaciones.',
-          date: '11 nov 2025',
-          readingTime: '5 min',
-          href: '/es/posts'
-        },
-        {
-          title: 'Notas sobre audio documental',
-          summary:
-            'Bitácora de producción y equipo para proyectos de audio largos.',
-          date: '02 nov 2025',
-          readingTime: '7 min',
-          href: '/es/posts'
-        },
-        {
-          title: 'Micro SaaS para subdominios',
-          summary:
-            'Guía rápida para lanzar utilidades en subdominios y medir tracción.',
-          date: '26 oct 2025',
-          readingTime: '4 min',
-          href: '/es/posts'
-        }
-      ]
+        'Estoy preparando contenido sobre desarrollo web, producto y las cosas que aprendo construyendo proyectos propios.',
+      items: []
     },
     facets: {
-      title: 'Capas de trabajo',
+      title: 'Trayectoria',
       caption:
-        'Porque mezclar servicios, producto y contenido mantiene el laboratorio vivo.',
+        'Siempre construyendo algo. Estas son las etapas que me trajeron hasta aquí.',
       items: [
         {
-          year: '2025',
-          title: 'Traductor de servicios a SaaS',
+          year: '2024 — presente',
+          title: 'Productos propios y desarrollo independiente',
           description:
-            'Convirtiendo estudios, newsletters y consultorías en software con ingresos recurrentes.'
+            'Enfocado en mis propios SaaS: Mi Granja, Baja Rent, HUAM Deportiva. Combino trabajo independiente con proyectos personales desde La Paz.'
         },
         {
-          year: '2023 — 2024',
-          title: 'Audio y docuseries',
+          year: '2020 — 2024',
+          title: 'Plataformas web y digitalización',
           description:
-            'Producción independiente y mezcla de historias para podcasts narrativos.'
+            'Desarrollo de plataformas completas para negocios. Desde sistemas de gestión hasta herramientas internas para equipos.'
         },
         {
-          year: '2018 — 2022',
-          title: 'Producto digital',
-          description: 'Lideré equipos de producto para startups SaaS en LatAm.'
+          year: '2014 — 2020',
+          title: 'Desarrollo web y primeros proyectos',
+          description:
+            'Sitios web, tiendas en línea y mis primeras aplicaciones. Aprendí haciendo, probando tecnologías y resolviendo problemas reales para clientes.'
         }
       ]
     },
     contact: {
-      title: 'Agenda una llamada blueprint',
+      title: 'Platiquemos',
       caption:
-        'Usamos 30 minutos para mapear tu servicio actual, costos, métricas y riesgos. Luego recibes un plan de conversión a SaaS.',
-      emailLabel: 'Correo directo',
+        'Si tienes un proyecto en mente, quieres digitalizar algo de tu negocio o simplemente quieres saludar, escríbeme. Siempre me gusta conocer ideas nuevas.',
+      emailLabel: 'Correo',
       email: 'hola@raulzarza.com',
-      newsletterCta: 'Quiero el plan en mi inbox',
-      commentsLabel: 'Comentarios abiertos vía Giscus en cada estudio de caso.',
+      newsletterCta: 'Próximamente newsletter',
+      commentsLabel: '',
       socials: [
-        // { label: 'Mastodon', href: 'https://indie.codes/@raulzarzadev' },
         { label: 'GitHub', href: 'https://github.com/raulzarzadev' },
         { label: 'LinkedIn', href: 'https://www.linkedin.com/in/raulzarzadev' }
       ]
     },
     footer: {
-      note: 'Diseñado en Astro + Strapi + Vercel. Analítica mínima con GA4 y planes de newsletter activa.'
+      note: 'Hecho con Astro y Tailwind desde La Paz, BCS.'
     }
   },
   en: {
     seo: {
       siteName: 'Raúl Zarza',
       description:
-        'Minimal landing, blog, and directory for subdomain projects like autows.'
+        'Web developer with 10+ years building SaaS, platforms, and digital tools for real businesses. Based in La Paz, Mexico.'
     },
     nav: {
       brand: 'raulzarza.com',
       links: [
-        { slug: 'posts', label: 'Posts' },
         { slug: 'projects', label: 'Projects' },
         { slug: 'about', label: 'About' },
         { slug: 'contact', label: 'Contact' }
       ]
     },
     hero: {
-      eyebrow: 'SaaS from working services',
-      title: 'I turn proven operations into scalable software',
+      eyebrow: 'Web developer · La Paz, Mexico',
+      title: 'I build digital tools for businesses that need to work better',
       description:
-        'Partnering with founders who already sell services to translate their delivery into focused, measurable SaaS products.',
+        'For over 10 years I\'ve been designing and developing web platforms, SaaS products, and tools that help real businesses digitize and optimize their operations. I like building new things and always have something in the works.',
       actions: [
         {
-          label: 'Book a SaaS blueprint',
-          href: '/en/contact',
+          label: 'See my projects',
+          href: '/en/projects',
           variant: 'default'
         },
-        { label: 'Explore playbooks', href: '/en/projects', variant: 'ghost' }
+        {
+          label: 'Get in touch',
+          href: '/en/contact',
+          variant: 'ghost'
+        },
+        {
+          label: 'Download CV',
+          href: '/cv-raul-zarza.pdf',
+          variant: 'ghost',
+          download: true
+        }
       ]
     },
     projects: {
-      title: 'SaaS labs on subdomains',
+      title: 'Projects',
       caption:
-        'Live sandboxes where I document how services evolve into multi-tenant products.',
+        'Products I\'ve built to solve real problems. Each one started from an actual need.',
       items: [
         {
-          name: 'raulzarza.com',
+          name: 'Mi Granja',
           description:
-            'Public HQ with portfolio, writing, and entry points to every SaaS experiment.',
-          stack: ['Astro', 'Tailwind', 'shadcn'],
-          status: 'Live',
-          href: 'https://raulzarza.com'
+            'SaaS for livestock management. Track inventory, reproduction, health records, and herd events from any device.',
+          stack: ['Next.js', 'Firebase', 'PWA'],
+          status: 'Active',
+          href: 'https://migranja.app'
         },
         {
-          name: 'autows',
+          name: 'Baja Rent',
           description:
-            'Automation studio evolving into a billing-ready platform for indie operators.',
-          stack: ['tRPC', 'Next.js', 'Supabase'],
-          status: 'Building',
-          href: 'https://autows.raulzarza.com'
+            'Platform for rental businesses: washers, bikes, tools, and more. Customer management, inventory, and payments.',
+          stack: ['Next.js', 'Firebase', 'Tailwind'],
+          status: 'Active',
+          href: 'https://bajarent.app'
         },
         {
-          name: 'lab',
+          name: 'HUAM Deportiva',
           description:
-            'Playbooks, pricing sandboxes, and technical snippets released in public.',
-          stack: ['Cloudflare', 'Workers', 'Bun'],
-          status: 'Beta',
-          href: 'https://lab.raulzarza.com'
+            'Platform to create, promote, and manage sports events in Baja California Sur, Mexico.',
+          stack: ['Next.js', 'Firebase', 'Maps'],
+          status: 'Active',
+          href: 'https://huamdeportiva.com'
+        },
+        {
+          name: 'Baja Minigolf',
+          description:
+            'Digital scoring system for a mini golf course in La Paz. Players track their scores in real time.',
+          stack: ['Next.js', 'Firebase', 'Realtime DB'],
+          status: 'Active',
+          href: 'https://bajaminigolf.com'
         }
       ]
     },
     services: {
-      title: 'How the SaaS translation works',
+      title: 'What I do',
       caption:
-        'Three stages to move from manual delivery to scalable software.',
+        'I work with businesses that want to digitize part of their operations or need a custom-built tool.',
       items: [
         {
-          title: 'Operational mapping',
+          title: 'Web platform development',
           description:
-            'Dissect the current service, capture value moments, and assign metrics per role.',
+            'I design and build full platforms: from idea to working product. Dashboards, admin panels, management systems.',
           deliverables: [
-            'Service blueprint',
-            'Automation inventory',
-            'Baseline metrics'
+            'Full web applications',
+            'Admin panels',
+            'APIs and databases'
           ]
         },
         {
-          title: 'SaaS-ready MVP',
+          title: 'SaaS products',
           description:
-            'Design minimal UX, define architecture, stack, pricing tiers, and build the core modules.',
+            'I create software as a service for specific niches. I specialize in taking a real problem and turning it into a tool anyone can use.',
           deliverables: [
-            'UX + copy kit',
-            'Documented stack',
-            'Billing + plans connected'
+            'Functional MVPs',
+            'Multi-tenant systems',
+            'Billing and subscriptions'
           ]
         },
         {
-          title: 'Scale & handoff',
+          title: 'Operations digitization',
           description:
-            'Ship analytics, guided onboarding, content support, and pricing experiments.',
+            'I help businesses move from spreadsheets and manual processes to digital systems that save time and reduce errors.',
           deliverables: [
-            'Metrics dashboard',
-            'Launch playbook',
-            'Quarterly roadmap'
+            'Process automation',
+            'Data migration',
+            'Team training'
           ]
         }
       ]
     },
     posts: {
-      title: 'Latest writing',
+      title: 'Coming soon',
       caption:
-        'Tactical notes on product, pricing, automation, and founder habits.',
-      items: [
-        {
-          title: 'Autonomy as a feature',
-          summary:
-            'How I design services that almost run themselves with automation.',
-          date: '11 Nov 2025',
-          readingTime: '5 min',
-          href: '/en/posts'
-        },
-        {
-          title: 'Documentary audio notes',
-          summary: 'Production log and tooling for long-form audio pieces.',
-          date: '02 Nov 2025',
-          readingTime: '7 min',
-          href: '/en/posts'
-        },
-        {
-          title: 'Micro SaaS on subdomains',
-          summary:
-            'Fast playbook for launching utilities on subdomains and measuring traction.',
-          date: '26 Oct 2025',
-          readingTime: '4 min',
-          href: '/en/posts'
-        }
-      ]
+        'I\'m working on content about web development, product building, and things I learn from my own projects.',
+      items: []
     },
     facets: {
-      title: 'Layers of work',
-      caption: 'Mixing services, product, and content keeps the lab alive.',
+      title: 'Background',
+      caption:
+        'Always building something. These are the stages that brought me here.',
       items: [
         {
-          year: '2025',
-          title: 'Service-to-SaaS translator',
+          year: '2024 — present',
+          title: 'Own products and independent development',
           description:
-            'Transforming studios, newsletters, and consultancies into recurring software revenue.'
+            'Focused on my own SaaS products: Mi Granja, Baja Rent, HUAM Deportiva. Combining independent work with personal projects from La Paz.'
         },
         {
-          year: '2023 — 2024',
-          title: 'Audio + docuseries',
+          year: '2020 — 2024',
+          title: 'Web platforms and digitization',
           description:
-            'Independent production and story editing for narrative podcasts.'
+            'Building full platforms for businesses. From management systems to internal tools for teams.'
         },
         {
-          year: '2018 — 2022',
-          title: 'Product leadership',
-          description: 'Led SaaS teams across LatAm, shaping B2B workflows.'
+          year: '2014 — 2020',
+          title: 'Web development and first projects',
+          description:
+            'Websites, online stores, and my first applications. I learned by doing, testing technologies, and solving real problems for clients.'
         }
       ]
     },
     contact: {
-      title: 'Book a blueprint call',
+      title: 'Let\'s talk',
       caption:
-        '30 minutes to map your current delivery, costs, metrics, and risks. Receive a concrete SaaS transition plan after the call.',
-      emailLabel: 'Direct email',
-      email: 'hello@raulzarza.com',
-      newsletterCta: 'Send me the plan',
-      commentsLabel: 'Public comments via Giscus on every case study.',
+        'If you have a project in mind, want to digitize something in your business, or just want to say hi, write me. I always enjoy hearing new ideas.',
+      emailLabel: 'Email',
+      email: 'hola@raulzarza.com',
+      newsletterCta: 'Newsletter coming soon',
+      commentsLabel: '',
       socials: [
         { label: 'GitHub', href: 'https://github.com/raulzarzadev' },
         { label: 'LinkedIn', href: 'https://www.linkedin.com/in/raulzarzadev' }
       ]
     },
     footer: {
-      note: 'Built with Astro + Strapi + Vercel. GA4 analytics with optional consent banner coming soon.'
+      note: 'Built with Astro and Tailwind from La Paz, BCS, Mexico.'
     }
   }
 }
