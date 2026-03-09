@@ -25,6 +25,13 @@ const currentPath = Astro.url.pathname;
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+      (function () {
+        const theme = localStorage.getItem('theme') ??
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+      })();
+    </script>
   </head>
   <body class="min-h-screen bg-background/80 text-foreground">
     <Header lang={lang} copy={copy} currentPath={currentPath} />
