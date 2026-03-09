@@ -6,7 +6,8 @@
       "WebFetch(domain:raulzarza.com)",
       "Bash(npm install:*)",
       "Bash(pnpm add:*)",
-      "Bash(pnpm run:*)"
+      "Bash(pnpm run:*)",
+      "Bash(curl:*)"
     ]
   }
 }

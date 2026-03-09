@@ -43,7 +43,7 @@ const copy = getCopy(lang);
         </Button>
         <div class="flex flex-wrap gap-3">
           {copy.contact.socials.map((social) => (
-            <a href={social.href} target="_blank" rel="noreferrer" class="text-sm text-muted-foreground underline-offset-4 hover:underline">
+            <a href={social.href} target="_blank" rel="noopener noreferrer" class="text-sm text-muted-foreground underline-offset-4 hover:underline">
               {social.label}
             </a>
           ))}
