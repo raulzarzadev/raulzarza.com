@@ -31,6 +31,33 @@ const navLinks = copy.nav.links.map((link) => ({
     <div class="flex items-center gap-2">
       <ThemeToggle />
       <LanguageToggle lang={lang} currentPath={currentPath} />
+      <button
+        id="mobile-menu-toggle"
+        type="button"
+        aria-label="Menu"
+        class="rounded-full p-2 text-muted-foreground transition-colors hover:text-foreground md:hidden"
+      >
+        <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12" />
+          <line x1="4" x2="20" y1="6" y2="6" />
+          <line x1="4" x2="20" y1="18" y2="18" />
+        </svg>
+      </button>
     </div>
   </div>
+  <nav id="mobile-menu" class="hidden border-t border-border/60 px-6 py-4 md:hidden">
+    <div class="flex flex-col gap-4">
+      {navLinks.map((link) => (
+        <a href={link.href} class="text-muted-foreground transition-colors hover:text-foreground">
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </nav>
 </header>
+
+<script is:inline>
+  document.getElementById('mobile-menu-toggle')?.addEventListener('click', () => {
+    document.getElementById('mobile-menu')?.classList.toggle('hidden');
+  });
+</script>

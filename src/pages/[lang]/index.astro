@@ -53,7 +53,7 @@ function toISODate(dateStr: string): string {
   return `${year}-${month}-${day}`;
 }
 ---
-<BaseLayout lang={lang} copy={copy} page={{ title: copy.seo.siteName, description: copy.seo.description }}>
+<BaseLayout lang={lang} copy={copy} page={{ description: copy.seo.description }}>
 
   <!-- Structured Data: Service schemas for the 3-stage SaaS process -->
   <SchemaServices lang={lang} services={copy.services.items} />
@@ -137,7 +137,7 @@ function toISODate(dateStr: string): string {
         </Button>
         <div class="flex flex-wrap gap-3 text-sm text-muted-foreground">
           {copy.contact.socials.map((social) => (
-            <a href={social.href} target="_blank" rel="noreferrer" class="underline-offset-4 hover:underline">
+            <a href={social.href} target="_blank" rel="noopener noreferrer" class="underline-offset-4 hover:underline">
               {social.label}
             </a>
           ))}

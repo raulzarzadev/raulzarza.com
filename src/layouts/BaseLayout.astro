@@ -19,17 +19,44 @@ const { lang, copy, page } = Astro.props;
 const pageTitle = page?.title ? `${page.title} · ${copy.seo.siteName}` : copy.seo.siteName;
 const pageDescription = page?.description ?? copy.seo.description;
 const currentPath = Astro.url.pathname;
-const currentUrl = `https://raulzarza.com${currentPath}`;
+const currentUrl = new URL(currentPath, Astro.site).href;
+
+const alternateLang = lang === 'es' ? 'en' : 'es';
+const pathSegments = currentPath.split('/').filter(Boolean);
+const pathWithoutLang = pathSegments.slice(1).join('/');
+const currentHref = new URL(`/${lang}${pathWithoutLang ? `/${pathWithoutLang}` : ''}`, Astro.site).href;
+const alternateHref = new URL(`/${alternateLang}${pathWithoutLang ? `/${pathWithoutLang}` : ''}`, Astro.site).href;
+const xDefaultHref = new URL(`/es${pathWithoutLang ? `/${pathWithoutLang}` : ''}`, Astro.site).href;
 ---
 <html lang={lang} class="bg-background text-foreground">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Structured Data: base schemas (Person, ProfessionalService, WebSite, WebPage) -->
+    <!-- Canonical & Hreflang -->
+    <link rel="canonical" href={currentUrl} />
+    <link rel="alternate" hreflang={lang} href={currentHref} />
+    <link rel="alternate" hreflang={alternateLang} href={alternateHref} />
+    <link rel="alternate" hreflang="x-default" href={xDefaultHref} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={currentUrl} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+    <meta property="og:locale:alternate" content={lang === 'es' ? 'en_US' : 'es_ES'} />
+    <meta property="og:site_name" content={copy.seo.siteName} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+
+    <!-- Structured Data -->
     <SchemaBase
       lang={lang}
       siteName={copy.seo.siteName}
@@ -37,8 +64,6 @@ const currentUrl = `https://raulzarza.com${currentPath}`;
       pageDescription={pageDescription}
       currentUrl={currentUrl}
     />
-
-    <!-- Structured Data: breadcrumbs -->
     <SchemaBreadcrumb
       lang={lang}
       currentPath={currentPath}

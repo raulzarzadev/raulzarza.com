@@ -202,7 +202,7 @@ const copy: Record<Lang, SiteCopy> = {
             'Cómo diseño servicios que pueden operar casi solos usando automatizaciones.',
           date: '11 nov 2025',
           readingTime: '5 min',
-          href: '/es/posts/autonomia-como-feature'
+          href: '/es/posts'
         },
         {
           title: 'Notas sobre audio documental',
@@ -210,7 +210,7 @@ const copy: Record<Lang, SiteCopy> = {
             'Bitácora de producción y equipo para proyectos de audio largos.',
           date: '02 nov 2025',
           readingTime: '7 min',
-          href: '/es/posts/notas-audio'
+          href: '/es/posts'
         },
         {
           title: 'Micro SaaS para subdominios',
@@ -218,7 +218,7 @@ const copy: Record<Lang, SiteCopy> = {
             'Guía rápida para lanzar utilidades en subdominios y medir tracción.',
           date: '26 oct 2025',
           readingTime: '4 min',
-          href: '/es/posts/microsaas-subdominios'
+          href: '/es/posts'
         }
       ]
     },
@@ -372,14 +372,14 @@ const copy: Record<Lang, SiteCopy> = {
             'How I design services that almost run themselves with automation.',
           date: '11 Nov 2025',
           readingTime: '5 min',
-          href: '/en/posts/autonomy-as-a-feature'
+          href: '/en/posts'
         },
         {
           title: 'Documentary audio notes',
           summary: 'Production log and tooling for long-form audio pieces.',
           date: '02 Nov 2025',
           readingTime: '7 min',
-          href: '/en/posts/audio-notes'
+          href: '/en/posts'
         },
         {
           title: 'Micro SaaS on subdomains',
@@ -387,7 +387,7 @@ const copy: Record<Lang, SiteCopy> = {
             'Fast playbook for launching utilities on subdomains and measuring traction.',
           date: '26 Oct 2025',
           readingTime: '4 min',
-          href: '/en/posts/micro-saas-subdomains'
+          href: '/en/posts'
         }
       ]
     },
@@ -423,9 +423,8 @@ const copy: Record<Lang, SiteCopy> = {
       newsletterCta: 'Send me the plan',
       commentsLabel: 'Public comments via Giscus on every case study.',
       socials: [
-        { label: 'Mastodon', href: 'https://indie.codes/@raulzarza' },
-        { label: 'GitHub', href: 'https://github.com/raulzarza' },
-        { label: 'LinkedIn', href: 'https://www.linkedin.com/in/raulzarza' }
+        { label: 'GitHub', href: 'https://github.com/raulzarzadev' },
+        { label: 'LinkedIn', href: 'https://www.linkedin.com/in/raulzarzadev' }
       ]
     },
     footer: {
