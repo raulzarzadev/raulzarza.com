@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(git push:*)",
+      "WebFetch(domain:raulzarza.com)",
+      "Bash(npm install:*)"
     ]
   }
 }

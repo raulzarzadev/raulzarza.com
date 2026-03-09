@@ -1,0 +1,93 @@
+---
+/**
+ * SchemaBreadcrumb.astro
+ * Generates BreadcrumbList JSON-LD from the current URL path.
+ * Include in BaseLayout.astro inside <head>.
+ */
+import type { Lang } from "../../content/site";
+
+interface Props {
+  lang: Lang;
+  currentPath: string;
+  pageTitle?: string;
+}
+
+const { lang, currentPath, pageTitle } = Astro.props;
+const baseUrl = "https://raulzarza.com";
+
+// Build breadcrumb items from the URL segments
+const segments = currentPath.split("/").filter(Boolean);
+
+// Labels for known slugs
+const labels: Record<string, Record<string, string>> = {
+  es: {
+    es: "Inicio",
+    posts: "Posts",
+    projects: "Proyectos",
+    about: "Sobre mi",
+    contact: "Contacto",
+  },
+  en: {
+    en: "Home",
+    posts: "Posts",
+    projects: "Projects",
+    about: "About",
+    contact: "Contact",
+  },
+};
+
+type BreadcrumbItem = {
+  "@type": "ListItem";
+  position: number;
+  name: string;
+  item?: string;
+};
+
+const items: BreadcrumbItem[] = [];
+
+// Always start with Home
+items.push({
+  "@type": "ListItem",
+  position: 1,
+  name: lang === "es" ? "Inicio" : "Home",
+  item: `${baseUrl}/${lang}`,
+});
+
+// Add intermediate and final segments (skip the lang segment itself)
+let pathSoFar = `/${lang}`;
+for (let i = 1; i < segments.length; i++) {
+  const seg = segments[i];
+  pathSoFar += `/${seg}`;
+  const isLast = i === segments.length - 1;
+  const name =
+    isLast && pageTitle
+      ? pageTitle
+      : labels[lang]?.[seg] ?? seg.charAt(0).toUpperCase() + seg.slice(1);
+
+  const entry: BreadcrumbItem = {
+    "@type": "ListItem",
+    position: i + 1,
+    name,
+  };
+
+  // Only add item URL if it is not the last breadcrumb (Google recommendation)
+  if (!isLast) {
+    entry.item = `${baseUrl}${pathSoFar}`;
+  }
+
+  items.push(entry);
+}
+
+// Only render if there are at least 2 breadcrumb items
+const shouldRender = items.length >= 2;
+
+const breadcrumbList = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items,
+};
+---
+
+{shouldRender && (
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbList)} />
+)}

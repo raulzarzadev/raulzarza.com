@@ -1,0 +1,51 @@
+---
+/**
+ * SchemaServices.astro
+ * Generates Service JSON-LD for the 3-stage SaaS consultancy process.
+ * Include on the homepage or a dedicated services page.
+ */
+import type { Lang, ServiceCard } from "../../content/site";
+
+interface Props {
+  lang: Lang;
+  services: ServiceCard[];
+}
+
+const { lang, services } = Astro.props;
+const baseUrl = "https://raulzarza.com";
+
+const serviceSchemas = services.map((service) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: service.title,
+  description: service.description,
+  provider: {
+    "@type": "ProfessionalService",
+    "@id": `${baseUrl}/#organization`,
+    name: "Raul Zarza",
+  },
+  areaServed: {
+    "@type": "Place",
+    name: lang === "es" ? "Latinoamerica y global (remoto)" : "Latin America and global (remote)",
+  },
+  serviceType: lang === "es" ? "Consultoria SaaS" : "SaaS Consultancy",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: lang === "es" ? "Entregables" : "Deliverables",
+    itemListElement: service.deliverables.map((d, i) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: d,
+      },
+    })),
+  },
+}));
+
+// Wrap all three services in a single array for cleaner output
+const combined = serviceSchemas;
+---
+
+{combined.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

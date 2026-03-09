@@ -1,0 +1,50 @@
+---
+/**
+ * SchemaBlogPosting.astro
+ * Generates BlogPosting JSON-LD for a single blog post.
+ * Use on individual post pages or in a loop on the posts listing page.
+ */
+interface Props {
+  title: string;
+  summary: string;
+  date: string;          // Human-readable date from the CMS, e.g. "11 Nov 2025"
+  isoDate: string;       // ISO 8601 date, e.g. "2025-11-11"
+  url: string;           // Absolute URL of the post
+  readingTime?: string;
+  lang: string;
+  image?: string;
+}
+
+const { title, summary, isoDate, url, readingTime, lang, image } = Astro.props;
+const baseUrl = "https://raulzarza.com";
+
+const blogPosting = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description: summary,
+  url: url,
+  datePublished: isoDate,
+  inLanguage: lang === "es" ? "es-MX" : "en",
+  ...(image && { image: image }),
+  author: {
+    "@type": "Person",
+    "@id": `${baseUrl}/#person`,
+    name: "Raul Zarza",
+  },
+  publisher: {
+    "@type": "ProfessionalService",
+    "@id": `${baseUrl}/#organization`,
+    name: "Raul Zarza",
+  },
+  isPartOf: {
+    "@type": "WebSite",
+    "@id": `${baseUrl}/#website`,
+  },
+  ...(readingTime && {
+    timeRequired: `PT${parseInt(readingTime)}M`,
+  }),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(blogPosting)} />

@@ -1,0 +1,101 @@
+---
+/**
+ * SchemaBase.astro
+ * Emits Person + ProfessionalService + WebSite JSON-LD on every page.
+ * Include once in BaseLayout.astro inside <head>.
+ */
+import type { Lang } from "../../content/site";
+
+interface Props {
+  lang: Lang;
+  siteName: string;
+  pageTitle: string;
+  pageDescription: string;
+  currentUrl: string;
+}
+
+const { lang, siteName, pageTitle, pageDescription, currentUrl } = Astro.props;
+
+const baseUrl = "https://raulzarza.com";
+
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${baseUrl}/#person`,
+  name: "Raul Zarza",
+  alternateName: "Raul Zarza",
+  url: baseUrl,
+  image: `${baseUrl}/images/raul-zarza.jpg`,
+  jobTitle: lang === "es" ? "Consultor SaaS y Producto Digital" : "SaaS Consultant & Digital Product Strategist",
+  description:
+    lang === "es"
+      ? "Trabajo con fundadores y equipos que ya tienen clientes para convertir su operacion en productos SaaS claros, medibles y listos para crecer."
+      : "Partnering with founders who already sell services to translate their delivery into focused, measurable SaaS products.",
+  knowsAbout: ["SaaS", "Product Strategy", "Automation", "No-Code", "Low-Code"],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Mexico City",
+    addressCountry: "MX",
+  },
+  sameAs: [
+    "https://github.com/raulzarzadev",
+    "https://www.linkedin.com/in/raulzarzadev",
+  ],
+};
+
+const professionalService = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${baseUrl}/#organization`,
+  name: "Raul Zarza",
+  url: baseUrl,
+  logo: `${baseUrl}/favicon.svg`,
+  description:
+    lang === "es"
+      ? "Consultoria de producto y SaaS. Transformo servicios probados en software escalable."
+      : "Product and SaaS consultancy. Turning proven operations into scalable software.",
+  founder: { "@id": `${baseUrl}/#person` },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Mexico City",
+    addressCountry: "MX",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: lang === "es" ? "hola@raulzarza.com" : "hello@raulzarza.com",
+    contactType: "customer service",
+    availableLanguage: ["Spanish", "English"],
+  },
+  sameAs: [
+    "https://github.com/raulzarzadev",
+    "https://www.linkedin.com/in/raulzarzadev",
+  ],
+};
+
+const webSite = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${baseUrl}/#website`,
+  name: siteName,
+  url: baseUrl,
+  inLanguage: lang === "es" ? "es-MX" : "en",
+  publisher: { "@id": `${baseUrl}/#organization` },
+};
+
+const webPage = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": currentUrl,
+  name: pageTitle,
+  description: pageDescription,
+  url: currentUrl,
+  inLanguage: lang === "es" ? "es-MX" : "en",
+  isPartOf: { "@id": `${baseUrl}/#website` },
+  about: { "@id": `${baseUrl}/#person` },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(person)} />
+<script type="application/ld+json" set:html={JSON.stringify(professionalService)} />
+<script type="application/ld+json" set:html={JSON.stringify(webSite)} />
+<script type="application/ld+json" set:html={JSON.stringify(webPage)} />
