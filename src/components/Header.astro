@@ -18,7 +18,8 @@ const navLinks = copy.nav.links.map((link) => ({
 ---
 <header class="sticky top-0 z-30 border-b border-border/60 bg-background/80 backdrop-blur-xl">
   <div class="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4 text-sm">
-    <a href={basePath} class="font-semibold tracking-tight">
+    <a href={basePath} class="flex items-center gap-2 font-semibold tracking-tight">
+      <img src="/icon.png" alt="Logo" class="size-6 rounded-full" width="24" height="24" />
       {copy.nav.brand}
     </a>
     <nav class="hidden gap-6 md:flex">

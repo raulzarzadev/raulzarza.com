@@ -34,7 +34,9 @@ const xDefaultHref = new URL(`/es${pathWithoutLang ? `/${pathWithoutLang}` : ''}
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon.png" />
+    <link rel="apple-touch-icon" href="/icon.png" />
 
     <!-- Canonical & Hreflang -->
     <link rel="canonical" href={currentUrl} />
@@ -50,11 +52,13 @@ const xDefaultHref = new URL(`/es${pathWithoutLang ? `/${pathWithoutLang}` : ''}
     <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
     <meta property="og:locale:alternate" content={lang === 'es' ? 'en_US' : 'es_ES'} />
     <meta property="og:site_name" content={copy.seo.siteName} />
+    <meta property="og:image" content={new URL('/icon.png', Astro.site).href} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={new URL('/icon.png', Astro.site).href} />
 
     <!-- Structured Data -->
     <SchemaBase
@@ -78,7 +82,12 @@ const xDefaultHref = new URL(`/es${pathWithoutLang ? `/${pathWithoutLang}` : ''}
       })();
     </script>
   </head>
-  <body class="min-h-screen bg-background/80 text-foreground">
+  <body class="relative min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div class="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
+      <div class="absolute -top-40 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-primary/[0.04] blur-[120px]"></div>
+      <div class="absolute top-1/3 -right-40 h-[400px] w-[500px] rounded-full bg-accent/[0.06] blur-[100px]"></div>
+      <div class="absolute bottom-0 left-0 h-[300px] w-[400px] rounded-full bg-primary/[0.03] blur-[80px]"></div>
+    </div>
     <Header lang={lang} copy={copy} currentPath={currentPath} />
     <main class="mx-auto flex w-full max-w-5xl flex-col gap-24 px-6 py-16">
       <slot />
