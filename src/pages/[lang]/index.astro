@@ -28,7 +28,7 @@ const copy = getCopy(lang);
   <SchemaServices lang={lang} services={copy.services.items} />
 
   <section class="space-y-6">
-    <SectionHeading eyebrow={copy.hero.eyebrow} title={copy.hero.title} caption={copy.hero.description} />
+    <SectionHeading eyebrow={copy.hero.eyebrow} title={copy.hero.title} caption={copy.hero.description} level="h1" />
     <div class="flex flex-wrap gap-4">
       {copy.hero.actions.map((action) => (
         <Button href={action.href} variant={action.variant} download={action.download}>

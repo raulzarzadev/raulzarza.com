@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "tw-animate-css";
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -120,7 +120,6 @@
       radial-gradient(ellipse 80% 50% at 50% -20%, oklch(0.45 0.08 260 / 0.12), transparent),
       radial-gradient(ellipse 60% 40% at 100% 50%, oklch(0.50 0.06 300 / 0.06), transparent),
       radial-gradient(ellipse 50% 50% at 0% 100%, oklch(0.45 0.06 200 / 0.06), transparent);
-    background-attachment: fixed;
   }
   .dark body {
     background-image:

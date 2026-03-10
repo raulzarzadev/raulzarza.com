@@ -22,7 +22,7 @@ const copy = getCopy(lang);
 ---
 <BaseLayout lang={lang} copy={copy} page={{ title: copy.contact.title, description: copy.contact.caption }}>
   <section class="space-y-8">
-    <SectionHeading title={copy.contact.title} caption={copy.contact.caption} />
+    <SectionHeading title={copy.contact.title} caption={copy.contact.caption} level="h1" />
     <div class="grid gap-6 md:grid-cols-2">
       <div class="space-y-4 rounded-3xl border border-border/60 p-6">
         <p class="text-sm font-medium">{copy.contact.emailLabel}</p>

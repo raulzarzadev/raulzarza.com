@@ -54,7 +54,7 @@ const principles =
 ---
 <BaseLayout lang={lang} copy={copy} page={{ title: copy.nav.links.find((l) => l.slug === "about")?.label, description: summary }}>
   <section class="space-y-5">
-    <SectionHeading title={lang === "es" ? "Sobre mí" : "About"} caption={summary} />
+    <SectionHeading title={lang === "es" ? "Sobre mí" : "About"} caption={summary} level="h1" />
     <div class="space-y-4 rounded-3xl border border-border/60 p-6 text-sm leading-relaxed text-muted-foreground">
       {bio.map((paragraph) => (
         <p>{paragraph}</p>

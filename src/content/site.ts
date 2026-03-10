@@ -44,6 +44,7 @@ export type ServiceCard = {
 export type SiteCopy = {
   seo: {
     siteName: string
+    siteTitle: string
     description: string
   }
   nav: {
@@ -94,6 +95,7 @@ const copy: Record<Lang, SiteCopy> = {
   es: {
     seo: {
       siteName: 'Raúl Zarza',
+      siteTitle: 'Raúl Zarza — Desarrollador Web & SaaS | La Paz, BCS',
       description:
         'Desarrollador web con +10 años de experiencia creando SaaS, plataformas y herramientas digitales para negocios reales. Desde La Paz, BCS.'
     },
@@ -256,6 +258,7 @@ const copy: Record<Lang, SiteCopy> = {
   en: {
     seo: {
       siteName: 'Raúl Zarza',
+      siteTitle: 'Raúl Zarza — Web Developer & SaaS Builder | La Paz, Mexico',
       description:
         'Web developer with 10+ years building SaaS, platforms, and digital tools for real businesses. Based in La Paz, Mexico.'
     },

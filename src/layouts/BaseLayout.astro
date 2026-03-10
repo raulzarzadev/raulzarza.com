@@ -16,7 +16,7 @@ interface Props {
 }
 
 const { lang, copy, page } = Astro.props;
-const pageTitle = page?.title ? `${page.title} · ${copy.seo.siteName}` : copy.seo.siteName;
+const pageTitle = page?.title ? `${page.title} · ${copy.seo.siteName}` : copy.seo.siteTitle;
 const pageDescription = page?.description ?? copy.seo.description;
 const currentPath = Astro.url.pathname;
 const currentUrl = new URL(currentPath, Astro.site).href;
@@ -82,12 +82,7 @@ const xDefaultHref = new URL(`/es${pathWithoutLang ? `/${pathWithoutLang}` : ''}
       })();
     </script>
   </head>
-  <body class="relative min-h-screen bg-background text-foreground overflow-x-hidden">
-    <div class="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
-      <div class="absolute -top-40 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-primary/[0.04] blur-[120px]"></div>
-      <div class="absolute top-1/3 -right-40 h-[400px] w-[500px] rounded-full bg-accent/[0.06] blur-[100px]"></div>
-      <div class="absolute bottom-0 left-0 h-[300px] w-[400px] rounded-full bg-primary/[0.03] blur-[80px]"></div>
-    </div>
+  <body class="min-h-screen bg-background text-foreground">
     <Header lang={lang} copy={copy} currentPath={currentPath} />
     <main class="mx-auto flex w-full max-w-5xl flex-col gap-24 px-6 py-16">
       <slot />

@@ -9,7 +9,13 @@
       "Bash(pnpm run:*)",
       "Bash(curl:*)",
       "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\":*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "WebFetch(domain:localhost)",
+      "Bash(npx lighthouse:*)",
+      "Bash(cat:*)",
+      "Bash(python3:*)",
+      "Bash(npx astro:*)",
+      "Bash(wc:*)"
     ]
   }
 }

@@ -4,13 +4,15 @@ interface Props {
   title: string;
   caption?: string;
   alignment?: "left" | "center";
+  level?: "h1" | "h2" | "h3";
 }
 
-const { eyebrow, title, caption, alignment = "left" } = Astro.props;
+const { eyebrow, title, caption, alignment = "left", level = "h2" } = Astro.props;
 const alignClass = alignment === "center" ? "text-center" : "text-left";
+const Tag = level;
 ---
 <div class={`space-y-2 ${alignClass}`}>
   {eyebrow && <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">{eyebrow}</p>}
-  <h2 class="text-2xl font-semibold tracking-tight">{title}</h2>
+  <Tag class={`font-semibold tracking-tight ${level === "h1" ? "text-3xl" : "text-2xl"}`}>{title}</Tag>
   {caption && <p class="text-base text-muted-foreground">{caption}</p>}
 </div>
