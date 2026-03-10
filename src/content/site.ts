@@ -285,7 +285,7 @@ const copy: Record<Lang, SiteCopy> = {
         },
         {
           label: 'Download CV',
-          href: '/cv-raul-zarza.pdf',
+          href: '/cv-raul-zarza-en.pdf',
           variant: 'ghost',
           download: true
         }

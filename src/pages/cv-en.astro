@@ -1,0 +1,196 @@
+---
+import "../styles/global.css";
+
+const name = "Raúl Zarza";
+const title = "Web Developer & SaaS Builder";
+const location = "La Paz, Baja California Sur, Mexico";
+const email = "hola@raulzarza.com";
+const web = "raulzarza.com";
+const github = "github.com/raulzarzadev";
+const linkedin = "linkedin.com/in/raulzarzadev";
+
+const summary =
+  "Web developer with over 10 years of experience designing and building web platforms, SaaS products, and digital tools for real businesses. I specialize in taking operational problems and turning them into working software. I work independently from La Paz, Mexico, combining my own products with custom development for clients.";
+
+const skills = {
+  frontend: ["React", "Next.js", "Astro", "Tailwind CSS", "HTML/CSS", "JavaScript", "TypeScript"],
+  backend: ["Node.js", "Firebase", "Supabase", "tRPC", "REST APIs"],
+  tools: ["Git", "Vercel", "Cloudflare", "PWA", "Google Maps API"],
+  other: ["UI/UX Design", "Technical SEO", "Multi-tenant Systems", "Payment Integration"],
+};
+
+const projects = [
+  {
+    name: "Mi Granja",
+    url: "migranja.app",
+    description:
+      "SaaS for livestock management. Track inventory, reproduction, health records, and herd events from any device.",
+    stack: "Next.js · Firebase · PWA",
+  },
+  {
+    name: "Baja Rent",
+    url: "bajarent.app",
+    description:
+      "Platform for rental businesses: washers, bikes, tools, and more. Customer management, inventory, and payments.",
+    stack: "Next.js · Firebase · Tailwind",
+  },
+  {
+    name: "HUAM Deportiva",
+    url: "huamdeportiva.com",
+    description:
+      "Platform to create, promote, and manage sports events in Baja California Sur, Mexico.",
+    stack: "Next.js · Firebase · Google Maps",
+  },
+  {
+    name: "Baja Minigolf",
+    url: "bajaminigolf.com",
+    description:
+      "Digital scoring system for a mini golf course in La Paz. Real-time score tracking.",
+    stack: "Next.js · Firebase · Realtime DB",
+  },
+];
+
+const experience = [
+  {
+    period: "2024 — Present",
+    role: "Independent Developer & Product Builder",
+    description:
+      "Development and maintenance of own SaaS products (Mi Granja, Baja Rent, HUAM Deportiva, Baja Minigolf). Design, architecture, fullstack development, and operations.",
+  },
+  {
+    period: "2020 — 2024",
+    role: "Web Platform Development",
+    description:
+      "Building full platforms for businesses: management systems, dashboards, admin panels, and internal tools. Operations digitization for diverse clients.",
+  },
+  {
+    period: "2014 — 2020",
+    role: "Web Development & First Projects",
+    description:
+      "Websites, online stores, and first web applications. Working with direct clients solving real problems. Exploration and adoption of modern technologies.",
+  },
+];
+
+const services = [
+  "Full web platform development",
+  "SaaS products (MVP to production)",
+  "Operations digitization and automation",
+  "Data migration and team training",
+];
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>CV — {name}</title>
+    <style>
+      @page { margin: 1.5cm; size: letter; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        color: #1a1a1a;
+        font-size: 11px;
+        line-height: 1.5;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      @media print { body { padding: 0; } }
+      h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+      h2 {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #666;
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 4px;
+        margin-bottom: 10px;
+        margin-top: 20px;
+      }
+      h3 { font-size: 12px; font-weight: 600; }
+      .header { margin-bottom: 16px; }
+      .subtitle { font-size: 13px; color: #555; margin-top: 2px; }
+      .meta { font-size: 10px; color: #777; margin-top: 6px; display: flex; gap: 12px; flex-wrap: wrap; }
+      .meta a { color: #555; text-decoration: none; }
+      .summary { color: #333; margin-top: 12px; }
+      .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+      .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px; }
+      .skill-group h3 { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+      .skill-group p { font-size: 11px; color: #333; }
+      .project { margin-bottom: 10px; }
+      .project .name { font-weight: 600; }
+      .project .url { color: #888; font-size: 10px; }
+      .project .desc { color: #444; margin-top: 2px; }
+      .project .stack { color: #888; font-size: 10px; margin-top: 2px; }
+      .exp { margin-bottom: 12px; }
+      .exp .period { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+      .exp .role { font-weight: 600; margin-top: 2px; }
+      .exp .desc { color: #444; margin-top: 2px; }
+      .service-list { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; list-style: none; }
+      .service-list li { color: #333; padding-left: 12px; position: relative; }
+      .service-list li::before { content: "—"; position: absolute; left: 0; color: #ccc; }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>{name}</h1>
+      <p class="subtitle">{title}</p>
+      <div class="meta">
+        <span>{location}</span>
+        <a href={`mailto:${email}`}>{email}</a>
+        <a href={`https://${web}`}>{web}</a>
+        <a href={`https://${github}`}>{github}</a>
+        <a href={`https://${linkedin}`}>{linkedin}</a>
+      </div>
+      <p class="summary">{summary}</p>
+    </div>
+
+    <h2>Skills</h2>
+    <div class="grid-4">
+      <div class="skill-group">
+        <h3>Frontend</h3>
+        <p>{skills.frontend.join(", ")}</p>
+      </div>
+      <div class="skill-group">
+        <h3>Backend</h3>
+        <p>{skills.backend.join(", ")}</p>
+      </div>
+      <div class="skill-group">
+        <h3>Tools</h3>
+        <p>{skills.tools.join(", ")}</p>
+      </div>
+      <div class="skill-group">
+        <h3>Other</h3>
+        <p>{skills.other.join(", ")}</p>
+      </div>
+    </div>
+
+    <h2>Own Products</h2>
+    <div class="grid-2">
+      {projects.map((p) => (
+        <div class="project">
+          <span class="name">{p.name}</span>
+          <span class="url"> · {p.url}</span>
+          <p class="desc">{p.description}</p>
+          <p class="stack">{p.stack}</p>
+        </div>
+      ))}
+    </div>
+
+    <h2>Experience</h2>
+    {experience.map((exp) => (
+      <div class="exp">
+        <p class="period">{exp.period}</p>
+        <p class="role">{exp.role}</p>
+        <p class="desc">{exp.description}</p>
+      </div>
+    ))}
+
+    <h2>Services</h2>
+    <ul class="service-list">
+      {services.map((s) => (
+        <li>{s}</li>
+      ))}
+    </ul>
+  </body>
+</html>

@@ -7,7 +7,9 @@
       "Bash(npm install:*)",
       "Bash(pnpm add:*)",
       "Bash(pnpm run:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\":*)",
+      "Bash(ls:*)"
     ]
   }
 }
