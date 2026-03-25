@@ -7,26 +7,37 @@ import SchemaBreadcrumb from "../components/schema/SchemaBreadcrumb.astro";
 import type { Lang, SiteCopy } from "../content/site";
 
 interface Props {
-  lang: Lang;
-  copy: SiteCopy;
-  page?: {
-    title?: string;
-    description?: string;
-  };
+	lang: Lang;
+	copy: SiteCopy;
+	page?: {
+		title?: string;
+		description?: string;
+	};
 }
 
 const { lang, copy, page } = Astro.props;
-const pageTitle = page?.title ? `${page.title} · ${copy.seo.siteName}` : copy.seo.siteTitle;
+const pageTitle = page?.title
+	? `${page.title} · ${copy.seo.siteName}`
+	: copy.seo.siteTitle;
 const pageDescription = page?.description ?? copy.seo.description;
 const currentPath = Astro.url.pathname;
 const currentUrl = new URL(currentPath, Astro.site).href;
 
-const alternateLang = lang === 'es' ? 'en' : 'es';
-const pathSegments = currentPath.split('/').filter(Boolean);
-const pathWithoutLang = pathSegments.slice(1).join('/');
-const currentHref = new URL(`/${lang}${pathWithoutLang ? `/${pathWithoutLang}` : ''}`, Astro.site).href;
-const alternateHref = new URL(`/${alternateLang}${pathWithoutLang ? `/${pathWithoutLang}` : ''}`, Astro.site).href;
-const xDefaultHref = new URL(`/es${pathWithoutLang ? `/${pathWithoutLang}` : ''}`, Astro.site).href;
+const alternateLang = lang === "es" ? "en" : "es";
+const pathSegments = currentPath.split("/").filter(Boolean);
+const pathWithoutLang = pathSegments.slice(1).join("/");
+const currentHref = new URL(
+	`/${lang}${pathWithoutLang ? `/${pathWithoutLang}` : ""}`,
+	Astro.site,
+).href;
+const alternateHref = new URL(
+	`/${alternateLang}${pathWithoutLang ? `/${pathWithoutLang}` : ""}`,
+	Astro.site,
+).href;
+const xDefaultHref = new URL(
+	`/es${pathWithoutLang ? `/${pathWithoutLang}` : ""}`,
+	Astro.site,
+).href;
 ---
 <html lang={lang} class="bg-background text-foreground">
   <head>
@@ -35,8 +46,8 @@ const xDefaultHref = new URL(`/es${pathWithoutLang ? `/${pathWithoutLang}` : ''}
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/icon.png" />
-    <link rel="apple-touch-icon" href="/icon.png" />
+    <link rel="icon" type="image/jpeg" href="/icon.jpg" />
+    <link rel="apple-touch-icon" href="/icon.jpg" />
 
     <!-- Canonical & Hreflang -->
     <link rel="canonical" href={currentUrl} />
@@ -52,13 +63,13 @@ const xDefaultHref = new URL(`/es${pathWithoutLang ? `/${pathWithoutLang}` : ''}
     <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
     <meta property="og:locale:alternate" content={lang === 'es' ? 'en_US' : 'es_ES'} />
     <meta property="og:site_name" content={copy.seo.siteName} />
-    <meta property="og:image" content={new URL('/icon.png', Astro.site).href} />
+    <meta property="og:image" content={new URL('/icon.jpg', Astro.site).href} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
-    <meta name="twitter:image" content={new URL('/icon.png', Astro.site).href} />
+    <meta name="twitter:image" content={new URL('/icon.jpg', Astro.site).href} />
 
     <!-- Structured Data -->
     <SchemaBase
