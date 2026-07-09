@@ -2,7 +2,7 @@ export const languages = ['es', 'en'] as const
 export type Lang = (typeof languages)[number]
 
 export type NavLink = {
-  slug: 'home' | 'posts' | 'projects' | 'about' | 'contact'
+  slug: 'home' | 'posts' | 'projects' | 'about' | 'contact' | 'natacion'
   label: string
 }
 
@@ -103,6 +103,7 @@ const copy: Record<Lang, SiteCopy> = {
       brand: 'raulzarza.com',
       links: [
         { slug: 'projects', label: 'Proyectos' },
+        { slug: 'natacion', label: 'Natación' },
         { slug: 'about', label: 'Sobre mí' },
         { slug: 'contact', label: 'Contacto' }
       ]
@@ -266,6 +267,7 @@ const copy: Record<Lang, SiteCopy> = {
       brand: 'raulzarza.com',
       links: [
         { slug: 'projects', label: 'Projects' },
+        { slug: 'natacion', label: 'Swimming' },
         { slug: 'about', label: 'About' },
         { slug: 'contact', label: 'Contact' }
       ]

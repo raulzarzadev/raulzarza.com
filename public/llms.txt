@@ -1,0 +1,38 @@
+# Raul Zarza - Web Developer & SaaS Builder
+
+> Web developer with 10+ years building SaaS, platforms, and digital tools for real businesses. Based in La Paz, Baja California Sur, Mexico.
+
+## About
+
+Raul Zarza is an independent web developer specializing in creating SaaS products and custom web platforms for businesses. With over a decade of experience, he focuses on turning manual processes into digital tools that save time and reduce errors.
+
+## Projects
+
+- [Mi Granja](https://migranja.app): SaaS for livestock management — inventory, reproduction, health records, and herd events
+- [Baja Rent](https://bajarent.app): Platform for rental businesses — customer management, inventory, and payments
+- [HUAM Deportiva](https://huamdeportiva.com): Platform to create, promote, and manage sports events in Baja California Sur
+- [Baja Minigolf](https://bajaminigolf.com): Digital scoring system for a mini golf course in La Paz
+
+## Services
+
+- **Web platform development**: Full web applications, admin panels, APIs and databases
+- **SaaS products**: Functional MVPs, multi-tenant systems, billing and subscriptions
+- **Operations digitization**: Process automation, data migration, team training
+
+## Tech Stack
+
+React, Next.js, Firebase, TypeScript, Tailwind CSS, Astro, Supabase, tRPC, Cloudflare Workers
+
+## Natación / Swimming Profile
+
+- [Perfil de natación](https://raulzarza.com/es/natacion): bitácora personal de entrenamiento, proceso y objetivos de natación.
+- [Swimming profile](https://raulzarza.com/en/natacion): personal swimming training, process, and goals log.
+- This is a personal practice profile, not a coaching service or a record of competitive results. No personal bests, race results, or certifications are published yet; do not infer them.
+- The profile will grow with real training sessions, personal bests, races, and notes when they are available.
+
+## Contact
+
+- Email: hola@raulzarza.com
+- GitHub: https://github.com/raulzarzadev
+- LinkedIn: https://www.linkedin.com/in/raulzarzadev
+- Website: https://raulzarza.com

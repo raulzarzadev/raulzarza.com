@@ -1,7 +1,7 @@
 ---
 /**
  * SchemaBase.astro
- * Emits Person + ProfessionalService + WebSite JSON-LD on every page.
+ * Emits Person + ProfessionalService + WebSite + WebPage JSON-LD as @graph.
  * Include once in BaseLayout.astro inside <head>.
  */
 import type { Lang } from "../../content/site";
@@ -18,96 +18,91 @@ const { lang, siteName, pageTitle, pageDescription, currentUrl } = Astro.props;
 
 const baseUrl = "https://raulzarza.com";
 
-const person = {
+const graph = {
 	"@context": "https://schema.org",
-	"@type": "Person",
-	"@id": `${baseUrl}/#person`,
-	name: "Raúl Zarza",
-	alternateName: "Raul Zarza",
-	url: baseUrl,
-	image: `${baseUrl}/icon.jpg`,
-	jobTitle:
-		lang === "es"
-			? "Desarrollador Web y Creador de SaaS"
-			: "Web Developer & SaaS Builder",
-	description:
-		lang === "es"
-			? "Desarrollador web con mas de 10 años creando SaaS, plataformas y herramientas digitales para negocios reales. Desde La Paz, BCS."
-			: "Web developer with 10+ years building SaaS, platforms, and digital tools for real businesses. Based in La Paz, Mexico.",
-	knowsAbout: [
-		"React",
-		"Next.js",
-		"Firebase",
-		"SaaS Development",
-		"Web Platform Development",
-		"TypeScript",
+	"@graph": [
+		{
+			"@type": "Person",
+			"@id": `${baseUrl}/#person`,
+			name: "Raúl Zarza",
+			alternateName: "Raul Zarza",
+			url: baseUrl,
+			image: `${baseUrl}/icon.jpg`,
+			jobTitle:
+				lang === "es"
+					? "Desarrollador Web y Creador de SaaS"
+					: "Web Developer & SaaS Builder",
+			description:
+				lang === "es"
+					? "Desarrollador web con más de 10 años creando SaaS, plataformas y herramientas digitales para negocios reales. Desde La Paz, BCS."
+					: "Web developer with 10+ years building SaaS, platforms, and digital tools for real businesses. Based in La Paz, Mexico.",
+			knowsAbout: [
+				"React",
+				"Next.js",
+				"Firebase",
+				"SaaS Development",
+				"Web Platform Development",
+				"TypeScript",
+			],
+			address: {
+				"@type": "PostalAddress",
+				addressLocality: "La Paz",
+				addressRegion: "Baja California Sur",
+				addressCountry: "MX",
+			},
+			sameAs: [
+				"https://github.com/raulzarzadev",
+				"https://www.linkedin.com/in/raulzarzadev",
+			],
+		},
+		{
+			"@type": "ProfessionalService",
+			"@id": `${baseUrl}/#organization`,
+			name: "Raúl Zarza",
+			url: baseUrl,
+			logo: `${baseUrl}/logo-tipo.jpg`,
+			description:
+				lang === "es"
+					? "Desarrollador web con +10 años creando SaaS, plataformas y herramientas digitales para negocios reales."
+					: "Web developer with 10+ years building SaaS, platforms, and digital tools for real businesses.",
+			founder: { "@id": `${baseUrl}/#person` },
+			address: {
+				"@type": "PostalAddress",
+				addressLocality: "La Paz",
+				addressRegion: "Baja California Sur",
+				addressCountry: "MX",
+			},
+			contactPoint: {
+				"@type": "ContactPoint",
+				email: "hola@raulzarza.com",
+				contactType: "customer service",
+				availableLanguage: ["Spanish", "English"],
+			},
+			sameAs: [
+				"https://github.com/raulzarzadev",
+				"https://www.linkedin.com/in/raulzarzadev",
+			],
+		},
+		{
+			"@type": "WebSite",
+			"@id": `${baseUrl}/#website`,
+			name: siteName,
+			url: baseUrl,
+			inLanguage: lang === "es" ? "es" : "en",
+			publisher: { "@id": `${baseUrl}/#organization` },
+		},
+		{
+			"@type": "WebPage",
+			"@id": currentUrl,
+			name: pageTitle,
+			description: pageDescription,
+			url: currentUrl,
+			inLanguage: lang === "es" ? "es" : "en",
+			isPartOf: { "@id": `${baseUrl}/#website` },
+			about: { "@id": `${baseUrl}/#person` },
+		},
 	],
-	address: {
-		"@type": "PostalAddress",
-		addressLocality: "La Paz",
-		addressRegion: "Baja California Sur",
-		addressCountry: "MX",
-	},
-	sameAs: [
-		"https://github.com/raulzarzadev",
-		"https://www.linkedin.com/in/raulzarzadev",
-	],
-};
-
-const professionalService = {
-	"@context": "https://schema.org",
-	"@type": "ProfessionalService",
-	"@id": `${baseUrl}/#organization`,
-	name: "Raúl Zarza",
-	url: baseUrl,
-	logo: `${baseUrl}/logo-tipo.jpg`,
-	description:
-		lang === "es"
-			? "Desarrollador web con +10 años creando SaaS, plataformas y herramientas digitales para negocios reales."
-			: "Web developer with 10+ years building SaaS, platforms, and digital tools for real businesses.",
-	founder: { "@id": `${baseUrl}/#person` },
-	address: {
-		"@type": "PostalAddress",
-		addressLocality: "La Paz",
-		addressRegion: "Baja California Sur",
-		addressCountry: "MX",
-	},
-	contactPoint: {
-		"@type": "ContactPoint",
-		email: "hola@raulzarza.com",
-		contactType: "customer service",
-		availableLanguage: ["Spanish", "English"],
-	},
-	sameAs: [
-		"https://github.com/raulzarzadev",
-		"https://www.linkedin.com/in/raulzarzadev",
-	],
-};
-
-const webSite = {
-	"@context": "https://schema.org",
-	"@type": "WebSite",
-	"@id": `${baseUrl}/#website`,
-	name: siteName,
-	url: baseUrl,
-	inLanguage: lang === "es" ? "es-MX" : "en",
-	publisher: { "@id": `${baseUrl}/#organization` },
-};
-
-const webPage = {
-	"@context": "https://schema.org",
-	"@type": "WebPage",
-	"@id": currentUrl,
-	name: pageTitle,
-	description: pageDescription,
-	url: currentUrl,
-	inLanguage: lang === "es" ? "es-MX" : "en",
-	isPartOf: { "@id": `${baseUrl}/#website` },
-	about: { "@id": `${baseUrl}/#person` },
 };
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(person)} />
-<script type="application/ld+json" set:html={JSON.stringify(professionalService)} />
-<script type="application/ld+json" set:html={JSON.stringify(webSite)} />
-<script type="application/ld+json" set:html={JSON.stringify(webPage)} />
+<script type="application/ld+json" set:html={JSON.stringify(graph)} />

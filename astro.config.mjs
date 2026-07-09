@@ -16,7 +16,16 @@ export default defineConfig({
           en: 'en',
         },
       },
-      filter: (page) => page !== 'https://raulzarza.com/',
+      filter: (page) =>
+        ![
+          'https://raulzarza.com/',
+          'https://raulzarza.com/developer',
+          'https://raulzarza.com/natacion',
+        ].includes(page) && !page.includes('/posts'),
+      serialize(item) {
+        item.lastmod = new Date().toISOString();
+        return item;
+      },
     }),
   ],
   vite: {

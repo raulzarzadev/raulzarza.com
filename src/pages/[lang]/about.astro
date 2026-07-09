@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
+import SchemaProfilePage from "../../components/schema/SchemaProfilePage.astro";
 import { getCopy, languages, type Lang } from "../../content/site";
 
 export const prerender = true;
@@ -52,7 +53,8 @@ const principles =
         "Always have something going. The best way to learn is by building.",
       ];
 ---
-<BaseLayout lang={lang} copy={copy} page={{ title: copy.nav.links.find((l) => l.slug === "about")?.label, description: summary }}>
+<BaseLayout lang={lang} copy={copy} page={{ title: lang === "es" ? "Sobre mí — Desarrollador Web con +10 Años" : "About — Web Developer with 10+ Years", description: summary }}>
+  <SchemaProfilePage />
   <section class="space-y-5">
     <SectionHeading title={lang === "es" ? "Sobre mí" : "About"} caption={summary} level="h1" />
     <div class="space-y-4 rounded-3xl border border-border/60 p-6 text-sm leading-relaxed text-muted-foreground">

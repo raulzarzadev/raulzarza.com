@@ -26,3 +26,8 @@ pnpm-debug.log*
 
 .claude/settings.local.json
 .vercel
+
+# Local codebase index and generated audit notes
+.codebase-memory/
+ACTION-PLAN.md
+FULL-AUDIT-REPORT.md

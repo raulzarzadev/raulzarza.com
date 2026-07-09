@@ -29,6 +29,28 @@ const copy = getCopy(lang);
 
   <section class="space-y-6">
     <SectionHeading eyebrow={copy.hero.eyebrow} title={copy.hero.title} caption={copy.hero.description} level="h1" />
+    <nav class="grid gap-3 sm:grid-cols-2" aria-label={lang === 'es' ? 'Perfiles principales' : 'Main profiles'}>
+      <a
+        href="/developer"
+        class="group flex min-h-28 flex-col justify-between rounded-3xl bg-primary p-6 text-primary-foreground transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      >
+        <span class="text-xs font-medium uppercase tracking-[0.22em] opacity-70">{lang === 'es' ? 'Perfil profesional' : 'Professional profile'}</span>
+        <span class="flex items-end justify-between gap-4 text-2xl font-semibold">
+          Developer
+          <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
+        </span>
+      </a>
+      <a
+        href="/natacion"
+        class="group flex min-h-28 flex-col justify-between rounded-3xl border border-border bg-card p-6 transition-transform hover:-translate-y-0.5 hover:border-foreground/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      >
+        <span class="text-xs font-medium uppercase tracking-[0.22em] text-muted-foreground">{lang === 'es' ? 'Perfil personal' : 'Personal profile'}</span>
+        <span class="flex items-end justify-between gap-4 text-2xl font-semibold">
+          {lang === 'es' ? 'Natación' : 'Swimming'}
+          <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
+        </span>
+      </a>
+    </nav>
     <div class="flex flex-wrap gap-4">
       {copy.hero.actions.map((action) => (
         <Button href={action.href} variant={action.variant} download={action.download}>

@@ -1,0 +1,17 @@
+---
+/**
+ * SchemaProfilePage.astro
+ * Emits ProfilePage JSON-LD for the about/profile page.
+ */
+const baseUrl = "https://raulzarza.com";
+
+const profilePage = {
+	"@context": "https://schema.org",
+	"@type": "ProfilePage",
+	mainEntity: { "@id": `${baseUrl}/#person` },
+	dateCreated: "2025-01-01",
+	dateModified: new Date().toISOString().split("T")[0],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(profilePage)} />

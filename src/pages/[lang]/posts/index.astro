@@ -23,7 +23,7 @@ const copy = getCopy(lang);
 <BaseLayout
   lang={lang}
   copy={copy}
-  page={{ title: `${copy.posts.title}`, description: copy.posts.caption }}
+  page={{ title: `${copy.posts.title}`, description: copy.posts.caption, noindex: copy.posts.items.length === 0 }}
 >
   <section class="space-y-8">
     <SectionHeading title={copy.posts.title} caption={copy.posts.caption} />

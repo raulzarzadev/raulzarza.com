@@ -20,7 +20,7 @@ export function getStaticPaths() {
 const { lang } = Astro.props as Props;
 const copy = getCopy(lang);
 ---
-<BaseLayout lang={lang} copy={copy} page={{ title: copy.contact.title, description: copy.contact.caption }}>
+<BaseLayout lang={lang} copy={copy} page={{ title: lang === "es" ? "Contacto — Desarrollo Web y SaaS" : "Contact — Web Development & SaaS", description: copy.contact.caption }}>
   <section class="space-y-8">
     <SectionHeading title={copy.contact.title} caption={copy.contact.caption} level="h1" />
     <div class="grid gap-6 md:grid-cols-2">

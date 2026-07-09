@@ -1,0 +1,35 @@
+---
+import type { Lang } from "../../content/site";
+
+interface Props {
+  lang: Lang;
+  currentUrl: string;
+  title: string;
+  description: string;
+}
+
+const { lang, currentUrl, title, description } = Astro.props;
+const baseUrl = "https://raulzarza.com";
+
+const swimmingProfile = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": `${currentUrl}#profile`,
+  name: title,
+  description,
+  url: currentUrl,
+  inLanguage: lang === "es" ? "es-MX" : "en",
+  isPartOf: { "@id": `${baseUrl}/#website` },
+  mainEntity: { "@id": `${baseUrl}/#person` },
+  about: {
+    "@type": "Thing",
+    name: lang === "es" ? "Natación" : "Swimming",
+    description:
+      lang === "es"
+        ? "Bitácora personal de entrenamiento, proceso y objetivos de natación."
+        : "A personal log of swimming training, process, and goals.",
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(swimmingProfile)} />

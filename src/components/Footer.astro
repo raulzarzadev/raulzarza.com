@@ -6,11 +6,34 @@ interface Props {
   copy: SiteCopy;
 }
 
-const { copy } = Astro.props;
+const { lang, copy } = Astro.props;
+const basePath = `/${lang}`;
 ---
 <footer class="border-t border-border/60">
-  <div class="mx-auto flex max-w-5xl flex-col gap-3 px-6 py-10 text-sm text-muted-foreground">
-    <p>{copy.footer.note}</p>
-    <p class="text-xs">© {new Date().getFullYear()} · {copy.nav.brand}</p>
+  <div class="mx-auto flex max-w-5xl flex-col gap-6 px-6 py-10 text-sm text-muted-foreground">
+    <nav class="flex flex-wrap gap-x-6 gap-y-2">
+      {copy.nav.links.map((link) => (
+        <a
+          href={link.slug === "home" ? basePath : `${basePath}/${link.slug}`}
+          class="underline-offset-4 hover:text-foreground hover:underline"
+        >
+          {link.label}
+        </a>
+      ))}
+      {copy.contact.socials.map((social) => (
+        <a
+          href={social.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline-offset-4 hover:text-foreground hover:underline"
+        >
+          {social.label}
+        </a>
+      ))}
+    </nav>
+    <div class="flex flex-col gap-1">
+      <p>{copy.footer.note}</p>
+      <p class="text-xs">&copy; {new Date().getFullYear()} &middot; {copy.nav.brand}</p>
+    </div>
   </div>
 </footer>

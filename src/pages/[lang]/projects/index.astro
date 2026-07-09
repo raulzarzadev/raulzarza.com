@@ -23,7 +23,7 @@ const copy = getCopy(lang);
 <BaseLayout
   lang={lang}
   copy={copy}
-  page={{ title: copy.projects.title, description: copy.projects.caption }}
+  page={{ title: lang === "es" ? "Proyectos SaaS y Plataformas Web" : "SaaS Projects & Web Platforms", description: copy.projects.caption }}
 >
   <section class="space-y-8">
     <SectionHeading title={copy.projects.title} caption={copy.projects.caption} />

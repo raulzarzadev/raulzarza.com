@@ -1,0 +1,173 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SchemaSwimmingProfile from "../../components/schema/SchemaSwimmingProfile.astro";
+import { getCopy, languages, type Lang } from "../../content/site";
+
+export const prerender = true;
+
+interface Props {
+  lang: Lang;
+}
+
+export function getStaticPaths() {
+  return languages.map((lang) => ({
+    params: { lang },
+    props: { lang },
+  }));
+}
+
+const { lang } = Astro.props as Props;
+const copy = getCopy(lang);
+const isSpanish = lang === "es";
+const pageTitle = isSpanish
+  ? "Perfil de natación: entrenamiento y bitácora"
+  : "Swimming profile: training and log";
+const pageDescription = isSpanish
+  ? "Perfil personal de natación de Raúl Zarza: entrenamiento, proceso, objetivos y una bitácora que crece con datos reales."
+  : "Raúl Zarza's personal swimming profile: training, process, goals, and a log that grows with real data.";
+const socialImageAlt = isSpanish
+  ? "Carriles de una piscina al amanecer para el perfil de natación de Raúl Zarza"
+  : "Swimming pool lanes at dawn for Raúl Zarza's swimming profile";
+
+const focus = isSpanish
+  ? [
+      { number: "01", title: "Entrenar", description: "Construir técnica, resistencia y consistencia, una sesión a la vez." },
+      { number: "02", title: "Registrar", description: "Entender el proceso y reconocer cada pequeño avance." },
+      { number: "03", title: "Disfrutar", description: "Volver al agua por el reto, la calma y la comunidad." },
+    ]
+  : [
+      { number: "01", title: "Train", description: "Building technique, endurance, and consistency one session at a time." },
+      { number: "02", title: "Track", description: "Understanding the process and noticing every small improvement." },
+      { number: "03", title: "Enjoy", description: "Returning to the water for the challenge, calm, and community." },
+    ];
+
+const nextUp = isSpanish
+  ? ["Entrenamientos", "Marcas personales", "Competencias"]
+  : ["Training sessions", "Personal bests", "Races"];
+---
+
+<BaseLayout
+  lang={lang}
+  copy={copy}
+  page={{
+    title: pageTitle,
+    description: pageDescription,
+    ogImage: "/og-natacion.jpg",
+    ogImageAlt: socialImageAlt,
+  }}
+>
+  <SchemaSwimmingProfile
+    lang={lang}
+    currentUrl={new URL(Astro.url.pathname, Astro.site).href}
+    title={pageTitle}
+    description={pageDescription}
+  />
+  <section class="swim-hero overflow-hidden rounded-[2rem] px-6 py-8 sm:px-10 sm:py-12">
+    <div class="swim-lanes" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="relative grid gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
+      <div class="max-w-2xl">
+        <p class="mb-6 text-xs font-semibold uppercase tracking-[0.32em] text-cyan-100/75">
+          {isSpanish ? "Perfil personal · En el agua" : "Personal profile · In the water"}
+        </p>
+        <h1 class="max-w-xl text-5xl font-semibold tracking-[-0.055em] text-white sm:text-7xl">
+          {isSpanish ? "Natación," : "Swimming,"}
+          <span class="block text-cyan-200">{isSpanish ? "a mi ritmo." : "at my pace."}</span>
+        </h1>
+        <p class="mt-7 max-w-lg text-base leading-relaxed text-slate-200 sm:text-lg">
+          {isSpanish
+            ? "Un espacio para entrenar con constancia, registrar el proceso y celebrar lo que se aprende dentro y fuera del agua."
+            : "A place to train consistently, track the process, and celebrate what swimming teaches in and out of the water."}
+        </p>
+      </div>
+
+      <div class="swim-note max-w-sm border-l border-cyan-200/40 pl-5 text-cyan-50">
+        <p class="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-100/70">
+          {isSpanish ? "Bitácora personal" : "Personal log"}
+        </p>
+        <p class="mt-3 text-sm leading-relaxed text-slate-200">
+          {isSpanish
+            ? "Sin prisa por llenar estadísticas: primero, hacer del agua una práctica que quiera sostener."
+            : "No rush to fill out stats: first, making the water a practice I want to sustain."}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="enfoque-title" class="space-y-7">
+    <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">{isSpanish ? "El enfoque" : "The approach"}</p>
+        <h2 id="enfoque-title" class="mt-2 text-3xl font-semibold tracking-tight">{isSpanish ? "Lo que guía cada sesión" : "What guides every session"}</h2>
+      </div>
+      <p class="max-w-sm text-sm leading-relaxed text-muted-foreground">
+        {isSpanish ? "Tres ideas simples para volver, aprender y avanzar." : "Three simple ideas to return, learn, and move forward."}
+      </p>
+    </div>
+
+    <ol class="grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-3">
+      {focus.map((item) => (
+        <li class="group min-h-52 bg-card p-6 transition-colors hover:bg-cyan-950/[0.035] dark:hover:bg-cyan-300/[0.06]">
+          <p class="font-mono text-xs tracking-[0.2em] text-cyan-700 dark:text-cyan-300">{item.number}</p>
+          <h3 class="mt-12 text-2xl font-semibold tracking-tight">{item.title}</h3>
+          <p class="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section aria-labelledby="proximo-title" class="grid gap-6 rounded-[2rem] border border-border bg-muted/45 p-6 sm:p-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">{isSpanish ? "Próximo capítulo" : "Next chapter"}</p>
+      <h2 id="proximo-title" class="mt-3 text-3xl font-semibold tracking-tight">
+        {isSpanish ? "La bitácora empieza aquí." : "The log starts here."}
+      </h2>
+      <p class="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+        {isSpanish
+          ? "Esta sección está lista para crecer con datos reales. Cuando haya algo que registrar, tendrá su lugar."
+          : "This section is ready to grow with real data. When there is something to record, it will have its place."}
+      </p>
+    </div>
+    <ul class="grid gap-3 sm:grid-cols-3" aria-label={isSpanish ? "Próximos registros" : "Upcoming entries"}>
+      {nextUp.map((item) => (
+        <li class="rounded-2xl border border-border bg-background px-4 py-5">
+          <span class="block text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">{isSpanish ? "Próximamente" : "Coming soon"}</span>
+          <span class="mt-3 block text-sm font-semibold">{item}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .swim-hero {
+    background:
+      radial-gradient(circle at 82% 24%, rgb(103 232 249 / 0.22), transparent 22rem),
+      radial-gradient(circle at 10% 100%, rgb(14 116 144 / 0.38), transparent 24rem),
+      linear-gradient(125deg, #071523 0%, #0b2b40 55%, #0d4359 100%);
+  }
+
+  .swim-lanes {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    pointer-events: none;
+    opacity: 0.35;
+  }
+
+  .swim-lanes span {
+    border-right: 1px solid rgb(207 250 254 / 0.22);
+    background: linear-gradient(180deg, transparent 0 8%, rgb(207 250 254 / 0.1) 8% 9%, transparent 9% 17%);
+    background-size: 100% 92px;
+  }
+
+  .swim-lanes span:first-child {
+    border-left: 1px solid rgb(207 250 254 / 0.22);
+  }
+
+  .swim-note {
+    background: linear-gradient(90deg, rgb(255 255 255 / 0.07), transparent);
+  }
+</style>
