@@ -24,7 +24,7 @@ pnpm-debug.log*
 .idea/
 
 
-.claude/settings.local.json
+.claude/
 .vercel
 
 # Local codebase index and generated audit notes
