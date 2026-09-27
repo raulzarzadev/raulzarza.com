@@ -88,6 +88,7 @@ export type SiteCopy = {
   }
   footer: {
     note: string
+    legal: string
   }
 }
 
@@ -253,7 +254,8 @@ const copy: Record<Lang, SiteCopy> = {
       ]
     },
     footer: {
-      note: 'Hecho con Astro y Tailwind desde La Paz, BCS.'
+      note: 'Hecho con Astro y Tailwind desde La Paz, BCS.',
+      legal: 'TechZarza es una marca operada por Raúl Edgar Zarza Santillán.'
     }
   },
   en: {
@@ -417,7 +419,8 @@ const copy: Record<Lang, SiteCopy> = {
       ]
     },
     footer: {
-      note: 'Built with Astro and Tailwind from La Paz, BCS, Mexico.'
+      note: 'Built with Astro and Tailwind from La Paz, BCS, Mexico.',
+      legal: 'TechZarza is a brand operated by Raúl Edgar Zarza Santillán.'
     }
   }
 }
