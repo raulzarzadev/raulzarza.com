@@ -19,6 +19,9 @@ export type ProjectCard = {
   stack: string[]
   status: string
   href: string
+  image: string
+  slug: string
+  gallery: string[]
 }
 
 export type PostCard = {
@@ -136,7 +139,7 @@ const copy: Record<Lang, SiteCopy> = {
     projects: {
       title: 'Proyectos',
       caption:
-        'Productos propios que he construido para resolver problemas reales. Cada uno nació de una necesidad concreta.',
+        'Productos propios y sitios web que he construido para negocios, profesionales y proyectos deportivos.',
       items: [
         {
           name: 'Mi Granja',
@@ -144,7 +147,10 @@ const copy: Record<Lang, SiteCopy> = {
             'SaaS para administración de ganado. Control de inventario, reproducción, salud y eventos del hato desde cualquier dispositivo.',
           stack: ['Next.js', 'Firebase', 'PWA'],
           status: 'Activo',
-          href: 'https://migranja.app'
+          href: 'https://migranja.app',
+          image: '/projects/migranja-cover.webp',
+          slug: 'migranja',
+          gallery: ['/projects/migranja-cover.webp', '/projects/migranja.webp']
         },
         {
           name: 'Baja Rent',
@@ -152,7 +158,10 @@ const copy: Record<Lang, SiteCopy> = {
             'Plataforma para negocios de renta: lavadoras, bicicletas, herramientas y más. Gestión de clientes, inventario y pagos.',
           stack: ['Next.js', 'Firebase', 'Tailwind'],
           status: 'Activo',
-          href: 'https://bajarent.app'
+          href: 'https://bajarent.app',
+          image: '/projects/bajarent-cover.webp',
+          slug: 'bajarent',
+          gallery: ['/projects/bajarent-cover.webp', '/projects/bajarent.webp']
         },
         {
           name: 'HUAM Deportiva',
@@ -160,7 +169,10 @@ const copy: Record<Lang, SiteCopy> = {
             'Plataforma para crear, promover y gestionar eventos deportivos en Baja California Sur.',
           stack: ['Next.js', 'Firebase', 'Maps'],
           status: 'Activo',
-          href: 'https://huamdeportiva.com'
+          href: 'https://huamdeportiva.com',
+          image: '/projects/huam-cover.webp',
+          slug: 'huam',
+          gallery: ['/projects/huam-cover.webp', '/projects/huam.webp']
         },
         {
           name: 'Baja Minigolf',
@@ -168,7 +180,54 @@ const copy: Record<Lang, SiteCopy> = {
             'Sistema de puntaje digital para un campo de minigolf en La Paz. Los jugadores registran sus scores en tiempo real.',
           stack: ['Next.js', 'Firebase', 'Realtime DB'],
           status: 'Activo',
-          href: 'https://bajaminigolf.com'
+          href: 'https://bajaminigolf.com',
+          image: '/projects/bajaminigolf-cover.webp',
+          slug: 'bajaminigolf',
+          gallery: ['/projects/bajaminigolf-cover.webp', '/projects/bajaminigolf.webp']
+        },
+        {
+          name: 'nadamas.app',
+          description:
+            'App de natación para atletas, entrenadores y escuelas. Horarios, reserva de clases, gestión de alumnos y seguimiento de su progreso.',
+          stack: ['Next.js'],
+          status: 'Activo',
+          href: 'https://nadamas.app',
+          image: '/projects/nadamas-cover.webp',
+          slug: 'nadamas',
+          gallery: ['/projects/nadamas-cover.webp', '/projects/nadamas.webp']
+        },
+        {
+          name: 'Nanda Paz',
+          description:
+            'Sitio web para una escuela de natación holística en La Paz. Clases en aguas abiertas, información de servicios y contacto.',
+          stack: ['Sitio web'],
+          status: 'Activo',
+          href: 'https://nandapaz.com',
+          image: '/projects/nandapaz-cover.webp',
+          slug: 'nandapaz',
+          gallery: ['/projects/nandapaz-cover.webp', '/projects/nandapaz.webp']
+        },
+        {
+          name: 'Abdon Marín',
+          description:
+            'Sitio web de entrenamiento personalizado en natación, atletismo y triatlón. Presentación de servicios y contacto para sesiones presenciales y en línea.',
+          stack: ['Sitio web'],
+          status: 'Activo',
+          href: 'https://abdon.mx',
+          image: '/projects/abdon-cover.webp',
+          slug: 'abdon',
+          gallery: ['/projects/abdon-cover.webp', '/projects/abdon.webp']
+        },
+        {
+          name: 'TechZarza',
+          description:
+            'Agencia de desarrollo web y soluciones digitales para negocios. Sitios web, plataformas y herramientas a la medida.',
+          stack: ['Agencia digital'],
+          status: 'Activo',
+          href: 'https://agencia.raulzarza.com',
+          image: '/projects/techzarza-cover.webp',
+          slug: 'techzarza',
+          gallery: ['/projects/techzarza-cover.webp', '/projects/techzarza.webp']
         }
       ]
     },
@@ -301,7 +360,7 @@ const copy: Record<Lang, SiteCopy> = {
     projects: {
       title: 'Projects',
       caption:
-        'Products I\'ve built to solve real problems. Each one started from an actual need.',
+        'Products and websites I\'ve built for businesses, professionals, and sports projects.',
       items: [
         {
           name: 'Mi Granja',
@@ -309,7 +368,10 @@ const copy: Record<Lang, SiteCopy> = {
             'SaaS for livestock management. Track inventory, reproduction, health records, and herd events from any device.',
           stack: ['Next.js', 'Firebase', 'PWA'],
           status: 'Active',
-          href: 'https://migranja.app'
+          href: 'https://migranja.app',
+          image: '/projects/migranja-cover.webp',
+          slug: 'migranja',
+          gallery: ['/projects/migranja-cover.webp', '/projects/migranja.webp']
         },
         {
           name: 'Baja Rent',
@@ -317,7 +379,10 @@ const copy: Record<Lang, SiteCopy> = {
             'Platform for rental businesses: washers, bikes, tools, and more. Customer management, inventory, and payments.',
           stack: ['Next.js', 'Firebase', 'Tailwind'],
           status: 'Active',
-          href: 'https://bajarent.app'
+          href: 'https://bajarent.app',
+          image: '/projects/bajarent-cover.webp',
+          slug: 'bajarent',
+          gallery: ['/projects/bajarent-cover.webp', '/projects/bajarent.webp']
         },
         {
           name: 'HUAM Deportiva',
@@ -325,7 +390,10 @@ const copy: Record<Lang, SiteCopy> = {
             'Platform to create, promote, and manage sports events in Baja California Sur, Mexico.',
           stack: ['Next.js', 'Firebase', 'Maps'],
           status: 'Active',
-          href: 'https://huamdeportiva.com'
+          href: 'https://huamdeportiva.com',
+          image: '/projects/huam-cover.webp',
+          slug: 'huam',
+          gallery: ['/projects/huam-cover.webp', '/projects/huam.webp']
         },
         {
           name: 'Baja Minigolf',
@@ -333,7 +401,54 @@ const copy: Record<Lang, SiteCopy> = {
             'Digital scoring system for a mini golf course in La Paz. Players track their scores in real time.',
           stack: ['Next.js', 'Firebase', 'Realtime DB'],
           status: 'Active',
-          href: 'https://bajaminigolf.com'
+          href: 'https://bajaminigolf.com',
+          image: '/projects/bajaminigolf-cover.webp',
+          slug: 'bajaminigolf',
+          gallery: ['/projects/bajaminigolf-cover.webp', '/projects/bajaminigolf.webp']
+        },
+        {
+          name: 'nadamas.app',
+          description:
+            'Swimming app for athletes, coaches, and schools. Schedules, class bookings, student management, and progress tracking.',
+          stack: ['Next.js'],
+          status: 'Active',
+          href: 'https://nadamas.app',
+          image: '/projects/nadamas-cover.webp',
+          slug: 'nadamas',
+          gallery: ['/projects/nadamas-cover.webp', '/projects/nadamas.webp']
+        },
+        {
+          name: 'Nanda Paz',
+          description:
+            'Website for a holistic swimming school in La Paz. Open-water classes, service information, and contact.',
+          stack: ['Website'],
+          status: 'Active',
+          href: 'https://nandapaz.com',
+          image: '/projects/nandapaz-cover.webp',
+          slug: 'nandapaz',
+          gallery: ['/projects/nandapaz-cover.webp', '/projects/nandapaz.webp']
+        },
+        {
+          name: 'Abdon Marín',
+          description:
+            'Website for personalized swimming, running, and triathlon coaching. Services and contact for in-person and online training.',
+          stack: ['Website'],
+          status: 'Active',
+          href: 'https://abdon.mx',
+          image: '/projects/abdon-cover.webp',
+          slug: 'abdon',
+          gallery: ['/projects/abdon-cover.webp', '/projects/abdon.webp']
+        },
+        {
+          name: 'TechZarza',
+          description:
+            'Web development and digital solutions agency for businesses. Websites, platforms, and custom-built tools.',
+          stack: ['Digital agency'],
+          status: 'Active',
+          href: 'https://agencia.raulzarza.com',
+          image: '/projects/techzarza-cover.webp',
+          slug: 'techzarza',
+          gallery: ['/projects/techzarza-cover.webp', '/projects/techzarza.webp']
         }
       ]
     },

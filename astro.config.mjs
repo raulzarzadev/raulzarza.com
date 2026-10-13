@@ -21,6 +21,7 @@ export default defineConfig({
           'https://raulzarza.com/',
           'https://raulzarza.com/developer',
           'https://raulzarza.com/natacion',
+          'https://raulzarza.com/ponguinguiola',
         ].includes(page) && !page.includes('/posts'),
       serialize(item) {
         item.lastmod = new Date().toISOString();

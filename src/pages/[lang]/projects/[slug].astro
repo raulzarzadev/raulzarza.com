@@ -1,0 +1,49 @@
+---
+import ProjectLogo from "../../../components/ProjectLogo.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getCopy, languages, type Lang, type ProjectCard } from "../../../content/site";
+
+export const prerender = true;
+export function getStaticPaths() {
+  return languages.flatMap((lang) => getCopy(lang).projects.items.map((project) => ({
+    params: { lang, slug: project.slug }, props: { lang, project },
+  })));
+}
+interface Props { lang: Lang; project: ProjectCard }
+const { lang, project } = Astro.props;
+const copy = getCopy(lang);
+const es = lang === "es";
+---
+<BaseLayout lang={lang} copy={copy} page={{ title: project.name, description: project.description, ogImage: project.image, ogImageAlt: project.name }}>
+  <article class="space-y-12">
+    <a href={`/${lang}/projects`} class="text-sm text-muted-foreground hover:text-foreground">← {es ? "Todos los proyectos" : "All projects"}</a>
+    <header class="grid items-end gap-8 md:grid-cols-[1fr_auto]">
+      <div class="space-y-5">
+        <span class="text-xs uppercase tracking-widest text-muted-foreground">{es ? "Proyecto" : "Project"} / {project.status}</span>
+        <h1 class="text-4xl font-semibold tracking-tight sm:text-6xl">{project.name}</h1>
+        <p class="max-w-2xl text-lg leading-relaxed text-muted-foreground">{project.description}</p>
+        <div class="flex flex-wrap gap-2">
+          {project.stack.map((tech) => <span class="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">{tech}</span>)}
+        </div>
+      </div>
+      <a href={project.href} target="_blank" rel="noopener noreferrer" class="inline-flex w-fit items-center gap-3 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition hover:opacity-80">
+        {es ? "Visitar sitio" : "Visit website"} <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+    <figure class="relative overflow-hidden rounded-3xl border border-border/60">
+      <img src={project.image} style={project.slug === "migranja" ? "object-position: center top" : undefined} alt={es ? `Ilustración de ${project.name}` : `Illustration for ${project.name}`} width="1536" height="1024" fetchpriority="high" class="aspect-[16/9] w-full object-cover" />
+      <ProjectLogo slug={project.slug} name={project.name} large />
+    </figure>
+    <section class="space-y-6" aria-labelledby="gallery-title">
+      <div class="flex flex-wrap items-baseline justify-between gap-3">
+        <h2 id="gallery-title" class="text-2xl font-semibold">{es ? "Identidad del proyecto" : "Project identity"}</h2>
+        <span class="text-sm text-muted-foreground">{new URL(project.href).hostname}</span>
+      </div>
+      {project.gallery.slice(1).map((src) => (
+        <figure class="overflow-hidden rounded-3xl border border-border/60 bg-white p-6 sm:p-12">
+          <img src={src} alt={es ? `Imagen oficial de ${project.name}` : `Official image for ${project.name}`} width="1200" height="630" loading="lazy" decoding="async" class="max-h-[500px] w-full object-contain" />
+        </figure>
+      ))}
+    </section>
+  </article>
+</BaseLayout>

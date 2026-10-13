@@ -1,0 +1,70 @@
+{
+  "name": "Raúl Zarza",
+  "headline": "Procesos de negocio, operación y herramientas digitales",
+  "application": "Postulación: Coordinación del Programa de Emprendimientos Circulares | Ponguinguiola A.C.",
+  "location": "La Paz, Baja California Sur | Más de seis años de residencia",
+  "phone": "+52 55 4337 4016",
+  "whatsapp": "https://wa.me/525543374016",
+  "website": "https://raulzarza.com/ponguinguiola",
+  "profile": "Experiencia en mejora de procesos, digitalización de operaciones y desarrollo de proyectos propios, junto con más de diez años como profesor y entrenador de natación. He colaborado en procesos de operación en BajaBlast y en la digitalización de rentas en Lavarenta. Me interesa contribuir al aprovechamiento de recursos y al emprendimiento en Baja California Sur.",
+  "experience": [
+    {
+      "title": "BajaBlast",
+      "context": "Tres años de trabajo",
+      "items": [
+        "Colaboración en el diseño de procesos de operación del negocio."
+      ]
+    },
+    {
+      "title": "Lavarenta",
+      "context": "Digitalización de operaciones de renta",
+      "items": [
+        "Digitalización de los procesos de renta y renovación de equipos.",
+        "Digitalización de los procesos de recolección y entrega de equipos.",
+        "Experiencia cercana a los retos de mantenimiento, reparación y costos de mano de obra en equipos de renta."
+      ]
+    },
+    {
+      "title": "Profesor y entrenador de natación",
+      "context": "Más de diez años de experiencia",
+      "items": [
+        "Dos años de trabajo en Nelson Vargas.",
+        "Enseñanza y entrenamiento de natación, con una perspectiva basada en física, ergonomía y biomecánica."
+      ]
+    },
+    {
+      "title": "Desarrollo de proyectos y herramientas digitales",
+      "context": "Productos propios y soluciones para negocios",
+      "items": [
+        "Creación de herramientas para organizar información y apoyar decisiones: Mi Granja (gestión ganadera) y nadamas.app (clases y progreso en natación).",
+        "Proyectos relacionados con renta y reparación: rentayrepara.com y lavarenta.com."
+      ]
+    },
+    {
+      "title": "Negocio familiar de abarrotes",
+      "context": "Experiencia formativa",
+      "items": [
+        "Atención de la tienda de mis padres y aprendizaje directo sobre el trabajo cotidiano y los procesos de un pequeño negocio."
+      ]
+    }
+  ],
+  "skills": [
+    "Diseño y mejora de procesos de operación",
+    "Digitalización de rentas y logística de equipos",
+    "Desarrollo de herramientas y productos digitales",
+    "Organización de información para tomar decisiones",
+    "Comprensión práctica de mantenimiento y reparabilidad",
+    "Enseñanza y entrenamiento de natación"
+  ],
+  "education": [
+    {
+      "title": "Licenciatura del Tiempo Libre",
+      "detail": "UniYMCA | Egreso en 2015. Formación en biomecánica y natación."
+    },
+    {
+      "title": "Estudios parciales de Ingeniería Mecánica",
+      "detail": "UAM Azcapotzalco | Formación en física, matemáticas, ergonomía y procesos de manufactura."
+    }
+  ],
+  "tools": "Desarrollo web, bases de datos y sistemas de gestión. Experiencia con Next.js, React, Firebase y herramientas de diseño de interfaces."
+}

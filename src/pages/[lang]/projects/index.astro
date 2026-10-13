@@ -29,15 +29,8 @@ const copy = getCopy(lang);
     <SectionHeading title={copy.projects.title} caption={copy.projects.caption} />
     <div class="grid gap-6 md:grid-cols-2">
       {copy.projects.items.map((project) => (
-        <ProjectCard project={project} />
+        <ProjectCard project={project} lang={lang} />
       ))}
     </div>
-  </section>
-  <section class="space-y-3 rounded-3xl border border-dashed border-border/60 p-6 text-sm text-muted-foreground">
-    <p>
-      {lang === "es"
-        ? "Cada proyecto vive en un subdominio independiente. La idea es publicar dashboards ligeros con métricas clave desde Strapi."
-        : "Each project lives under its own subdomain. Upcoming work: publish lightweight dashboards fed by Strapi metrics."}
-    </p>
   </section>
 </BaseLayout>

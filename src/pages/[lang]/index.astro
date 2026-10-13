@@ -64,7 +64,7 @@ const copy = getCopy(lang);
     <SectionHeading title={copy.projects.title} caption={copy.projects.caption} />
     <div class="grid gap-6 md:grid-cols-2">
       {copy.projects.items.map((project) => (
-        <ProjectCard project={project} />
+        <ProjectCard project={project} lang={lang} />
       ))}
     </div>
   </section>

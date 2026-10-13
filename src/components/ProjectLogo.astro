@@ -1,0 +1,33 @@
+---
+interface Props { slug: string; name: string; large?: boolean }
+const { slug, name, large = false } = Astro.props;
+const logos: Record<string, string> = {
+  migranja: "migranja.webp", bajarent: "bajarent.webp", huam: "huam.svg",
+  bajaminigolf: "bajaminigolf.webp", nadamas: "nadamas.webp",
+  nandapaz: "nandapaz-transparent.png", techzarza: "techzarza-transparent.png",
+};
+---
+<div data-project={slug} class:list={["project-logo", { large, wide: slug === "nadamas" }]}>
+  {slug === "abdon" ? (
+    <span class="ecab" aria-label="EcabMx">Ecab<span>Mx</span></span>
+  ) : (
+    <img src={`/projects/logos/${logos[slug]}`} alt={`Logo ${name}`} width="160" height="160" decoding="async" />
+  )}
+</div>
+<style>
+  .project-logo { position: absolute; top: 1rem; right: 1rem; z-index: 1; width: clamp(4.5rem, 19%, 6.5rem); pointer-events: none; filter: drop-shadow(0 1px 1px rgb(255 255 255 / .6)) drop-shadow(0 2px 3px rgb(0 0 0 / .45)); }
+  .project-logo.large { top: clamp(1rem, 3vw, 2rem); right: clamp(1rem, 3vw, 2rem); width: clamp(5.5rem, 18%, 9rem); }
+  .project-logo.wide { width: clamp(7rem, 30%, 10rem); }
+  .project-logo.wide.large { width: clamp(8rem, 25%, 14rem); }
+  .project-logo[data-project="nandapaz"] { right: auto; left: 1rem; }
+  .project-logo[data-project="nandapaz"].large { left: clamp(1rem, 3vw, 2rem); }
+  .project-logo[data-project="migranja"] { top: .65rem; width: 17%; }
+  .project-logo[data-project="migranja"].large { top: 1rem; width: 15%; }
+  .project-logo[data-project="nadamas"] { top: auto; bottom: 2.5rem; }
+  .project-logo[data-project="nadamas"].large { bottom: clamp(2.5rem, 5vw, 4rem); }
+  .project-logo[data-project="nadamas"] img { filter: brightness(0) invert(1); }
+  img { display: block; width: 100%; height: auto; max-height: 7rem; object-fit: contain; object-position: top right; }
+  .large img { max-height: 10rem; }
+  .ecab { display: block; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; letter-spacing: -.08em; color: white; white-space: nowrap; }
+  .ecab span { color: #c6f200; }
+</style>
