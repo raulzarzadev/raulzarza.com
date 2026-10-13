@@ -11,7 +11,7 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, KeepTogethe
 
 ROOT = Path(__file__).resolve().parents[1]
 data = json.loads((ROOT / "src/content/ponguinguiola-cv.json").read_text())
-destination = ROOT / "public/ponguinguiola/cv-raul-zarza-ponguinguiola.pdf"
+destination = ROOT / "public/ponguinguiola/cv-raul-zarza-ponguinguiola-una-pagina.pdf"
 destination.parent.mkdir(parents=True, exist_ok=True)
 green = colors.HexColor("#203c33")
 gray = colors.HexColor("#44554b")
